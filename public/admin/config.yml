@@ -1,18 +1,18 @@
 backend:
   name: git-gateway
-  branch: main # Reemplaza con el nombre de la rama principal de tu repositorio
+  branch: main
 
-media_folder: 'public/images/uploads'
-public_folder: '/images/uploads'
+media_folder: static/images/uploads
+public_folder: /images/uploads
 
 collections:
-  - name: 'articulos'
-    label: 'Artículos'
-    folder: 'content/articulos'
+  - name: "articulos"
+    label: "Artículos"
+    folder: "content/articulos"
     create: true
+    slug: "{{slug}}"
     fields:
-      - { label: 'Título', name: 'titulo', widget: 'string' }
-      - { label: 'Categoría', name: 'categoria', widget: 'select', options: ['Política', 'River Plate'] }
-      - { label: 'Resumen', name: 'resumen', widget: 'text' }
-      - { label: 'Imagen', name: 'imagen', widget: 'image' }
-      - { label: 'Contenido', name: 'contenido', widget: 'markdown' }
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Resumen", name: "summary", widget: "text" }
+      - { label: "Cuerpo", name: "body", widget: "markdown" }
