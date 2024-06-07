@@ -3,31 +3,106 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --color-primary: #FFD700; /* Amarillo PRO */
+  --color-secondary: #FF0000; /* Rojo River Plate */
+  --color-background: #FFFFFF; /* Fondo blanco */
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--color-background);
+  color: #333333;
+  font-family: 'Poppins', sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Hero Section */
+.hero-section {
+  background-image: url('/images/hero-background11.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Timeline Section */
+.timeline-section {
+  background-color: #f7f7f7;
+}
+
+.timeline-container {
+  position: relative;
+  padding-top: 40px;
+}
+
+.timeline-line {
+  width: 2px;
+  height: 100%;
+  background-color: #eb192e;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  align-self: flex-start;
+}
+
+.timeline-point {
+  width: 16px;
+  height: 16px;
+  background-color: #eb192e;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.timeline-content {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+/* Gallery Section */
+.gallery-section img {
+  transition: transform 0.3s ease;
+}
+
+.gallery-section img:hover {
+  transform: scale(1.05);
+}
+
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+}
+
+/* Button Styles */
+button {
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Infinite Scroll Loader */
+.infinite-scroll-component__outerdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
