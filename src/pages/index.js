@@ -8,13 +8,14 @@ import RiverPlate from '../app/components/RiverPlate';
 import SocialFeed from '../app/components/SocialFeed';
 import Gallery from '../app/components/Gallery';
 import Footer from '../app/components/Footer';
+import Contacto from '@/components/contacto';
 
 export default function Home() {
   return (
     <div>
       <Head>
-        <title>Web del Diputado</title>
-        <meta name="description" content="Sitio web del diputado y dirigente de River Plate" />
+        <title>Agustín Forchieri</title>
+        <meta name="description" content="Diputado Agustín Forchieri Dirigente de River" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -27,8 +28,9 @@ export default function Home() {
         <RiverPlate />
         <FeaturedNews />
         <SocialFeed />
+        
        </main>
-
+      <Contacto />  
       <Footer />
     </div>
   );

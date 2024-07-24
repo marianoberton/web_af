@@ -1,36 +1,40 @@
+import Link from 'next/link';
+import { FaTwitter, FaInstagram } from 'react-icons/fa';
+
 const Footer = () => {
   return (
-    <footer className="p-10 bg-gray-200">
+    <footer className="p-10 bg-gray-200 text-gray-800">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* Redes Sociales */}
-          <div className="text-gray-800 text-center md:text-left">
-            <h3 className="text-lg font-bold mb-2">Redes Sociales</h3>
+          <div className="text-center md:text-left">
+            <h3 className="text-lg font-bold mb-2 text-gray-800">Redes Sociales</h3>
             <div className="flex justify-center md:justify-start space-x-4">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                <img src="/images/twitter-icon.png" alt="Twitter" className="h-8 w-8" />
+              <a href="https://twitter.com/aforchieri?lang=es" target="_blank" rel="noopener noreferrer">
+                <FaTwitter className="h-8 w-8 text-gray-800 hover:text-yellow-600" />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                <img src="/images/facebook-icon.png" alt="Facebook" className="h-8 w-8" />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <img src="/images/instagram-icon.png" alt="Instagram" className="h-8 w-8" />
+              <a href="https://www.instagram.com/agustin_forchieri/?hl=es" target="_blank" rel="noopener noreferrer">
+                <FaInstagram className="h-8 w-8 text-gray-800 hover:text-yellow-600" />
               </a>
             </div>
           </div>
-          {/* Información de Contacto */}
-          <div className="text-gray-800 text-center md:text-left">
-            <h3 className="text-lg font-bold mb-2">Contacto</h3>
-            <p>Correo: contacto@diputado.com</p>
-            <p>Teléfono: (123) 456-7890</p>
-          </div>
           {/* Logo */}
-          <div className="text-gray-800 text-center md:text-right">
-            <img src="/images/logo.png" alt="Logo" className="h-10 mx-auto md:mx-0" />
+          <div className="text-center md:text-right">
+            <Link href="/" legacyBehavior>
+              <a className="text-2xl font-bold text-gray-800">AGUSTIN FORCHIERI</a>
+            </Link>
+          </div>
+          <div className="flex space-x-4">
+            <a href="https://www.cariverplate.com.ar/" target="_blank" rel="noopener noreferrer">
+              <img src="/images/River/river-logo.png" alt="River Plate" className="h-10 w-auto" />
+            </a>
+            <a href="https://www.hcdiputados-ba.gov.ar/" target="_blank" rel="noopener noreferrer">
+              <img src="/images/logo-legis.png" alt="Cámara de Diputados" className="h-10 w-auto" />
+            </a>
           </div>
         </div>
-        <div className="text-center text-gray-800 mt-10">
-          <p>&copy; 2023 Diputado. Todos los derechos reservados.</p>
+        <div className="flex justify-center items-center mt-4">
+          <p className="text-center text-gray-600">&copy; 2024 Agustín Forchieri. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

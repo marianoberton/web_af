@@ -25,13 +25,13 @@ const Header = () => {
             <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300">Biografía</a>
           </Link>
           <Link href="/parlamento" legacyBehavior>
-            <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300">Parlamento</a>
+            <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300">Legislatura</a>
+          </Link>
+          <Link href="/riverplate" legacyBehavior>
+            <a className="text-gray-800 font-semibold hover:text-red-500 transition duration-300">River</a>
           </Link>
           <Link href="/articulos" legacyBehavior>
             <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300">Artículos</a>
-          </Link>
-          <Link href="/river" legacyBehavior>
-            <a className="text-gray-800 font-semibold hover:text-red-500 transition duration-300">River</a>
           </Link>
         </nav>
         <div className="md:hidden">
@@ -50,13 +50,13 @@ const Header = () => {
               <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300" onClick={toggleMenu}>Biografía</a>
             </Link>
             <Link href="/parlamento" legacyBehavior>
-              <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300" onClick={toggleMenu}>Parlamento</a>
+              <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300" onClick={toggleMenu}>Legislatura</a>
+            </Link>
+            <Link href="/riverplate" legacyBehavior>
+              <a className="text-gray-800 font-semibold hover:text-red-500 transition duration-300" onClick={toggleMenu}>River</a>
             </Link>
             <Link href="/articulos" legacyBehavior>
               <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300" onClick={toggleMenu}>Artículos</a>
-            </Link>
-            <Link href="/river" legacyBehavior>
-              <a className="text-gray-800 font-semibold hover:text-red-500 transition duration-300" onClick={toggleMenu}>River</a>
             </Link>
           </nav>
         </div>

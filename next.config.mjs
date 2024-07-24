@@ -1,19 +1,20 @@
-/** @type {import('next').NextConfig} */
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 const nextConfig = {
-    images: {
-      domains: ['res.cloudinary.com'],
-    },
-    webpack: (config, { isServer }) => {
-      if (!isServer) {
-        config.resolve.fallback = {
-          ...config.resolve.fallback,
-          fs: false,
-          path: require.resolve('path-browserify'),
-        };
-      }
-      return config;
-    },
-  };
-  
-  module.exports = nextConfig;
-  
+  output: 'export',
+  trailingSlash: true,
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        fs: false,
+        path: require.resolve("path-browserify"),
+      };
+    }
+    return config;
+  },
+};
+
+
+
+export default nextConfig;
