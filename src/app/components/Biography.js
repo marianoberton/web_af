@@ -18,7 +18,7 @@ const Biography = () => {
     
         <div className="text-center md:text-left">
           <Link href="/biografia" legacyBehavior>
-            <a className="text-yellow-500 font-bold text-lg">Leer biografía completa</a>
+            <a className="text-blue-900 font-bold text-lg">Leer biografía completa</a>
           </Link>
         </div>
       </div>

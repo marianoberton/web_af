@@ -10,7 +10,7 @@ const Hero = () => {
           
           <div className="mt-8 space-x-4 flex justify-end">
             <Link href="/parlamento" legacyBehavior>
-              <a className="px-6 py-3 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition duration-300">Legislatura</a>
+              <a className="px-6 py-3 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300">Legislatura</a>
             </Link>
             <Link href="/riverplate" legacyBehavior>
               <a className="px-6 py-3 bg-red-500 text-white rounded flex items-center hover:bg-red-600 transition duration-300">

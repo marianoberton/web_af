@@ -13,7 +13,7 @@ export async function getStaticProps() {
 
     return {
       props: {
-        articulosData: articulosData.data || [],
+        articulosData: articulosData || [],
       },
     };
   } catch (error) {
@@ -94,9 +94,12 @@ const Articulos = ({ articulosData }) => {
                   <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
                     {articulo.attributes.image && articulo.attributes.image.data && (
                       <img
-                        src={`http://127.0.0.1:1337${articulo.attributes.image.data.attributes.url}`}
+                        src={`${process.env.STRAPI_API_URL}${articulo.attributes.image.data.attributes.url}`}
                         alt={articulo.attributes.title}
                         className="object-cover object-center h-full w-full"
+                        onError={(e) => { e.target.onerror = null; e.target.src = "/path-to-default-image.jpg"; }}
+                        onLoad={(e) => { console.log("Image URL:", e.target.src); }}
+
                       />
                     )}
                   </div>
@@ -106,7 +109,7 @@ const Articulos = ({ articulosData }) => {
                   <p className="text-gray-700 mb-4">{articulo.attributes.summary.substring(0, 100)}...</p>
                 </div>
                 <Link href={`/articulo/${articulo.id}`} legacyBehavior>
-                  <a className="px-6 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition duration-300 inline-block mt-auto">Leer más</a>
+                  <a className="px-6 py-2 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300 inline-block mt-auto">Leer más</a>
                 </Link>
               </div>
             ))}

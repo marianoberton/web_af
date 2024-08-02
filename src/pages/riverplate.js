@@ -160,8 +160,9 @@ const River = () => {
 
 
 
-         {/* Call to Action */}
-         <section className="py-16 bg-red-600 text-white text-center relative overflow-hidden">
+     {/* Call to Action */}
+        {/* 
+        <section className="py-16 bg-red-600 text-white text-center relative overflow-hidden">
           <div className="flex justify-center items-center mb-8">
             <img src="/images/River/river-logo.png" alt="Logo River Plate" className="w-24 h-24 mr-4" />
             <h2 className="text-3xl font-bold">¡Asociate a River!</h2>
@@ -170,7 +171,9 @@ const River = () => {
           <Link href="https://tumomentodesersocio.riverid.com.ar/" legacyBehavior>
             <a className="px-6 py-3 bg-white text-red-600 font-bold rounded hover:bg-gray-200 transition duration-300">Asociate</a>
           </Link>
-        </section>
+        </section> 
+        */}
+
       </main>
 
       <Footer />

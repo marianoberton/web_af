@@ -40,7 +40,7 @@ const Contacto = () => {
                   name="nombre"
                   value={formData.nombre}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md bg-gray-200 border-gray-300 text-gray-800 shadow-sm focus:border-yellow-500 focus:ring-yellow-500"
+                  className="mt-1 block w-full rounded-md bg-gray-200 border-gray-300 text-gray-800 shadow-sm focus:border-blue-800 focus:ring-blue-800"
                 />
               </div>
               <div>
@@ -53,7 +53,7 @@ const Contacto = () => {
                   name="correo"
                   value={formData.correo}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md bg-gray-200 border-gray-300 text-gray-800 shadow-sm focus:border-yellow-500 focus:ring-yellow-500"
+                  className="mt-1 block w-full rounded-md bg-gray-200 border-gray-300 text-gray-800 shadow-sm focus:border-blue-800 focus:ring-blue-900"
                 />
               </div>
               <div>
@@ -66,7 +66,7 @@ const Contacto = () => {
                   value={formData.mensaje}
                   onChange={handleChange}
                   rows="3"
-                  className="mt-1 block w-full rounded-md bg-gray-200 border-gray-300 text-gray-800 shadow-sm focus:border-yellow-500 focus:ring-yellow-500"
+                  className="mt-1 block w-full rounded-md bg-gray-200 border-gray-300 text-gray-800 shadow-sm focus:border-blue-800 focus:ring-blue-900"
                 ></textarea>
               </div>
               <div>
@@ -78,7 +78,7 @@ const Contacto = () => {
                   name="categoria"
                   value={formData.categoria}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md bg-gray-200 border-gray-300 text-gray-800 shadow-sm focus:border-yellow-500 focus:ring-yellow-500"
+                  className="mt-1 block w-full rounded-md bg-gray-200 border-gray-300 text-gray-800 shadow-sm focus:border-blue-800 focus:ring-blue-900"
                 >
                   <option value="Política">Política</option>
                   <option value="River">River</option>
@@ -86,7 +86,7 @@ const Contacto = () => {
               </div>
               <button
                 type="submit"
-                className="px-4 py-2 bg-yellow-500 text-gray-800 font-bold rounded hover:bg-yellow-600 transition duration-300 w-full"
+                className="px-4 py-2 bg-blue-800 text-white font-bold rounded hover:bg-blue-900 transition duration-300 w-full"
               >
                 Enviar
               </button>

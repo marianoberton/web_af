@@ -23,7 +23,7 @@ const FeaturedProjects = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {proyectosData.map((proyecto) => (
           <div key={proyecto.id} className="p-5 bg-gray-100 rounded-lg shadow-lg text-center">
-            <FaFileSignature className="text-6xl text-yellow-500 mx-auto mb-4" />
+            <FaFileSignature className="text-6xl text-blue-800 mx-auto mb-4" />
             <h3 className="text-2xl font-semibold mb-2">{proyecto.titulo}</h3>
             <p className="text-lg mb-4">{proyecto.descripcion}</p>
           </div>
@@ -32,7 +32,7 @@ const FeaturedProjects = () => {
 
       <div className="text-center mt-10">
         <Link href="/parlamento" legacyBehavior>
-          <a className="px-6 py-3 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition duration-300 text-lg font-bold">Ver todos los proyectos</a>
+          <a className="px-6 py-3 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300 text-lg font-bold">Ver todos los proyectos</a>
         </Link>
       </div>
     </section>
