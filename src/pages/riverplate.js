@@ -4,6 +4,7 @@ import Footer from '../app/components/Footer';
 import Link from 'next/link';
 import { FaTwitter, FaInstagram } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const River = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -34,9 +35,10 @@ const River = () => {
       {/* Hero section with video background */}
       <section className="relative h-[70vh] bg-cover bg-center">
         {isMobile ? (
-          <img
+          <Image
             src="/images/river/IMG_7550_copia.jpg"
             alt="River Plate"
+            layout="fill"
             className="absolute w-full h-full object-cover"
           />
         ) : (
@@ -69,8 +71,8 @@ const River = () => {
               </p>
             </div>
             <div className="flex flex-col gap-8">
-              <img src="/images/River/estadio2.jpeg" alt="River Plate 1" className="w-full h-full object-cover rounded-lg shadow-lg" />
-              <img src="/images/River/af_y_dirigentes_cancha.jpeg" alt="River Plate 2" className="w-full h-full object-cover rounded-lg shadow-lg" />
+              <Image src="/images/River/estadio2.jpeg" alt="River Plate 1" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg" />
+              <Image src="/images/River/af_y_dirigentes_cancha.jpeg" alt="River Plate 2" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg" />
             </div>
           </div>
           <div className="md:hidden">
@@ -78,23 +80,21 @@ const River = () => {
             <p className="text-lg leading-relaxed mb-4">
               Mi vida está atravesada por River. En la infancia, me acuerdo cómo contaba los días para que llegue el domingo para ir con mi familia al Monumental. Ir en el auto escuchando la previa, pensar cómo se iba a parar el equipo. Llegar a la cancha y empezar a subir las escaleras internas, hasta que por fin, veíamos el pasto, la gente. Miles y miles de personas en un mismo lugar, con el mismo objetivo: Compartir la pasión y alentar al más grande.
             </p>
-            <img src="/images/River/estadio2.jpeg" alt="River Plate 1" className="w-full h-full object-cover rounded-lg shadow-lg mb-4" />
+            <Image src="/images/River/estadio2.jpeg" alt="River Plate 1" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg mb-4" />
             <p className="text-lg leading-relaxed mb-4">
               Después vino la adolescencia y la juventud, los viajes para ver a River con los amigos que el club me dio y abrazarme con desconocidos en un grito de gol. Esperaba que publicaran el fixture para empezar a planificar con mis amigos a dónde y cómo iríamos. La única certeza que teníamos, era que queríamos estar. Hoy cambiaron muchas cosas en mi vida menos la pasión por River. Cumplí el sueño de formar mi familia, ser yo quien los lleve a la cancha y les regale su primera camiseta. A su vez, tuve el gran honor de representar al club como Asambleísta, Secretario de la Asamblea y Prosecretario, cargo que ocupo actualmente.
             </p>
-            <img src="/images/River/af_y_dirigentes_cancha.jpeg" alt="River Plate 2" className="w-full h-full object-cover rounded-lg shadow-lg mb-4" />
+            <Image src="/images/River/af_y_dirigentes_cancha.jpeg" alt="River Plate 2" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg mb-4" />
             <p className="text-lg leading-relaxed">
               Para mí, ser dirigente de River es mucho más que un título: es una misión y una responsabilidad enorme. Defender nuestros colores, nuestra historia y nuestra identidad es algo que llevo con orgullo y dedicación. Es impresionante ver el compromiso de los hinchas y empleados del club, trabajando juntos para que River siga siendo el más grande de la Argentina. Todos los que llevamos a River en el corazón tenemos la responsabilidad de seguir este legado, para que la grandeza que nos define hoy siga viva en nuestros hijos y en los hijos de ellos.
             </p>
           </div>
         </section>
 
-       
-
         {/* Sección de Agrupación Nuevos Dirigentes */}
         <section className="py-16 bg-gray-200 text-gray-800 text-center relative overflow-hidden">
           <div className="flex justify-center items-center mb-8">
-            <img src="/images/River/logo_nd.png" alt="Logo Nuevos Dirigentes" className="w-24 h-24 mr-4" />
+            <Image src="/images/River/logo_nd.png" alt="Logo Nuevos Dirigentes" width={100} height={100} className="w-24 h-24 mr-4" />
             <h2 className="text-3xl font-bold">Agrupación Nuevos Dirigentes</h2>
           </div>
           <p className="text-lg mb-8">Seguinos en nuestras redes sociales</p>
@@ -157,14 +157,11 @@ const River = () => {
           </div>
         </section>
 
-
-
-
      {/* Call to Action */}
         {/* 
         <section className="py-16 bg-red-600 text-white text-center relative overflow-hidden">
           <div className="flex justify-center items-center mb-8">
-            <img src="/images/River/river-logo.png" alt="Logo River Plate" className="w-24 h-24 mr-4" />
+            <Image src="/images/River/river-logo.png" alt="Logo River Plate" width={100} height={100} className="w-24 h-24 mr-4" />
             <h2 className="text-3xl font-bold">¡Asociate a River!</h2>
           </div>
           <p className="text-lg mb-8">Tu momento de ser socio. Hacelo rápido, fácil y 100% online.</p>

@@ -4,6 +4,7 @@ import Header from '../app/components/Header';
 import Footer from '../app/components/Footer';
 import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Image from 'next/image';
 import { fetchAPI } from '../../lib/api'; // Asegúrate de que la ruta sea correcta
 
 export async function getStaticProps() {
@@ -93,13 +94,12 @@ const Articulos = ({ articulosData }) => {
                 <div>
                   <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
                     {articulo.attributes.image && articulo.attributes.image.data && (
-                      <img
+                      <Image
                         src={`${process.env.STRAPI_API_URL}${articulo.attributes.image.data.attributes.url}`}
                         alt={articulo.attributes.title}
-                        className="object-cover object-center h-full w-full"
+                        layout="fill"
+                        className="object-cover object-center"
                         onError={(e) => { e.target.onerror = null; e.target.src = "/path-to-default-image.jpg"; }}
-                        onLoad={(e) => { console.log("Image URL:", e.target.src); }}
-
                       />
                     )}
                   </div>

@@ -3,6 +3,7 @@ import Header from '../app/components/Header';
 import Footer from '../app/components/Footer';
 import Link from 'next/link';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const multimediaData = [
   {
@@ -69,7 +70,7 @@ const Galeria = () => {
           {multimediaFiltrada.map((item) => (
             <div key={item.id} className="bg-white p-4 rounded shadow">
               <div className="relative h-48 w-full overflow-hidden">
-                <img src={item.miniatura} alt={item.titulo} className="object-contain object-center h-full w-full" />
+                <Image src={item.miniatura} alt={item.titulo} layout="fill" className="object-contain object-center" />
               </div>
               <h2 className="text-xl font-bold mt-2">{item.titulo}</h2>
               <Link href={`/multimedia/${item.id}`} legacyBehavior>

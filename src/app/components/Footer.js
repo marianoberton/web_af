@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FaTwitter, FaInstagram } from 'react-icons/fa';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -26,10 +27,10 @@ const Footer = () => {
           </div>
           <div className="flex space-x-4">
             <a href="https://www.cariverplate.com.ar/" target="_blank" rel="noopener noreferrer">
-              <img src="/images/River/river-logo.png" alt="River Plate" className="h-10 w-auto" />
+              <Image src="/images/River/river-logo.png" alt="River Plate" width={40} height={40} />
             </a>
             <a href="https://www.hcdiputados-ba.gov.ar/" target="_blank" rel="noopener noreferrer">
-              <img src="/images/logo-legis.png" alt="Cámara de Diputados" className="h-10 w-auto" />
+              <Image src="/images/logo-legis.png" alt="Cámara de Diputados" width={40} height={40} />
             </a>
           </div>
         </div>

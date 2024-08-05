@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Header from '../../app/components/Header';
 import Footer from '../../app/components/Footer';
+import Image from 'next/image';
 import { fetchAPI } from '../../../lib/api';
 
 export async function getStaticPaths() {
@@ -59,10 +60,11 @@ const Articulo = ({ articulo }) => {
         <div className="container mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="relative h-96 w-full overflow-hidden">
             {imageUrl ? (
-              <img
+              <Image
                 src={imageUrl}
                 alt={title}
-                className="object-cover object-center h-full w-full"
+                layout="fill"
+                className="object-cover object-center"
                 onError={(e) => { e.target.onerror = null; e.target.src = "/path-to-default-image.jpg"; }} // Reemplaza con tu imagen por defecto
               />
             ) : (

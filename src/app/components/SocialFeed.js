@@ -1,5 +1,6 @@
 import { FaHeart, FaComment } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const SocialFeed = () => {
   const [posts, setPosts] = useState([
@@ -79,12 +80,12 @@ const SocialFeed = () => {
           {posts.filter(post => post.type === 'instagram').map((post) => (
             <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
               <div className="p-4 flex items-center">
-                <img src={post.profilePic} alt="Profile" className="w-10 h-10 rounded-full mr-3" />
+                <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
                 <div>
                   <h3 className="font-bold">{post.username}</h3>
                 </div>
               </div>
-              <img src={post.postPic} alt="Post" className="w-full h-64 object-cover rounded-lg" />
+              <Image src={post.postPic} alt="Post" width={400} height={256} className="w-full h-64 object-cover rounded-lg" />
               <div className="p-4">
                 <div className="flex justify-between items-center mb-2">
                   <div className="flex items-center">

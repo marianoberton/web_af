@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Header from '../app/components/Header';
 import Footer from '../app/components/Footer';
+import Image from 'next/image';
 
 const Biografia = () => {
   return (
@@ -18,7 +19,7 @@ const Biografia = () => {
         <section className="py-16 bio-section">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-1 order-1 md:order-2 flex justify-center items-center">
-              <img src="/images/profile_bio.jpg" alt="Diputado Agustín Forchieri" className="object-cover w-full shadow-md" />
+              <Image src="/images/profile_bio.jpg" alt="Diputado Agustín Forchieri" width={400} height={400} className="object-cover w-full shadow-md" />
             </div>
             <div className="md:col-span-2 order-2 md:order-1">
               <h2 className="text-4xl font-bold mb-8">Biografía</h2>
@@ -42,12 +43,12 @@ const Biografia = () => {
         <section className="py-16 gallery-section">
           <h2 className="text-4xl font-bold mb-8 text-center">Galería</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <img src="/images/perfil_alta.jpg" alt="Gallery 1" className="w-full h-64 object-cover rounded-lg shadow-md" />
-            <img src="/images/af_y_dirigentes_cancha.jpeg" alt="Gallery 2" className="w-full h-64 object-cover rounded-lg shadow-md" />
-            <img src="/images/River/palco_dirigentes.jpg" alt="Gallery 3" className="w-full h-64 object-cover rounded-lg shadow-md" />
-            <img src="/images/territorio.jpg" alt="Gallery 4" className="w-full h-64 object-cover rounded-lg shadow-md" />
-            <img src="/images/acto_politico.jpg" alt="Gallery 5" className="w-full h-64 object-cover rounded-lg shadow-md" />
-            <img src="/images/perfil_legislativo_legiscaba_alta.jpg" alt="Gallery 6" className="w-full h-64 object-cover rounded-lg shadow-md" />
+            <Image src="/images/perfil_alta.jpg" alt="Gallery 1" width={300} height={300} className="w-full h-64 object-cover rounded-lg shadow-md" />
+            <Image src="/images/af_y_dirigentes_cancha.jpeg" alt="Gallery 2" width={300} height={300} className="w-full h-64 object-cover rounded-lg shadow-md" />
+            <Image src="/images/River/palco_dirigentes.jpg" alt="Gallery 3" width={300} height={300} className="w-full h-64 object-cover rounded-lg shadow-md" />
+            <Image src="/images/territorio.jpg" alt="Gallery 4" width={300} height={300} className="w-full h-64 object-cover rounded-lg shadow-md" />
+            <Image src="/images/acto_politico.jpg" alt="Gallery 5" width={300} height={300} className="w-full h-64 object-cover rounded-lg shadow-md" />
+            <Image src="/images/perfil_legislativo_legiscaba_alta.jpg" alt="Gallery 6" width={300} height={300} className="w-full h-64 object-cover rounded-lg shadow-md" />
           </div>
         </section>
       </main>

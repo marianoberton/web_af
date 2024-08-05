@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Modal from 'react-modal';
+import Image from 'next/image';
 import { FaPlay } from 'react-icons/fa';
 
 Modal.setAppElement('#__next'); // Esto es necesario para accesibilidad
@@ -20,12 +21,12 @@ const RiverPlate = () => {
     <section className="relative p-5 md:p-10 text-white" style={{ backgroundImage: 'url(/mnt/data/image.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#eb192e' }}>
       <div className="relative z-10 bg-opacity-90 p-5 md:p-10 rounded-lg">
         <div className="flex items-center justify-center mb-10">
-          <img src="/images/River/river-logo.png" alt="River Plate Logo" className="h-16 w-auto mr-4" />
+          <Image src="/images/River/river-logo.png" alt="River Plate Logo" width={64} height={64} className="h-16 w-auto mr-4" />
           <h2 className="text-4xl font-bold text-center text-white">River</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-          <h4 className="text-4xl font-bold text-center text-white mb-8 md:text-left ml-auto">Mi pasión y compromiso</h4>
+            <h4 className="text-4xl font-bold text-center text-white mb-8 md:text-left ml-auto">Mi pasión y compromiso</h4>
             <p className="text-lg leading-relaxed mb-6">
               River es parte integral de mi vida desde la infancia. Desde los domingos en familia en el Monumental hasta los viajes con amigos, la pasión por el club ha sido una constante. Hoy, como dirigente, tengo el honor y la responsabilidad de defender nuestra historia e identidad.
               
@@ -39,10 +40,10 @@ const RiverPlate = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <img src="/images/River/river-1.jpg" alt="River Plate Image 1" className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" />
-            <img src="/images/River/river-2.jpg" alt="River Plate Image 2" className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" />
-            <img src="/images/River/river-3.jpg" alt="River Plate Image 3" className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" />
-            <img src="/images/River/river_4.jpg" alt="River Plate Image 4" className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" />
+            <Image src="/images/River/river-1.jpg" alt="River Plate Image 1" width={300} height={200} className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" />
+            <Image src="/images/River/river-2.jpg" alt="River Plate Image 2" width={300} height={200} className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" />
+            <Image src="/images/River/river-3.jpg" alt="River Plate Image 3" width={300} height={200} className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" />
+            <Image src="/images/River/river_4.jpg" alt="River Plate Image 4" width={300} height={200} className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" />
           </div>
         </div>
       </div>
