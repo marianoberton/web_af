@@ -94,15 +94,14 @@ const Articulos = ({ articulosData }) => {
               <div key={articulo.id} className="bg-white p-6 rounded-lg shadow-lg flex flex-col justify-between">
                 <div>
                   <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
-                    {articulo.attributes.image && articulo.attributes.image.data && (
-                      <Image
-                        src={`${process.env.STRAPI_API_URL}${articulo.attributes.image.data.attributes.url}`}
-                        alt={articulo.attributes.title}
-                        layout="fill"
-                        className="object-cover object-center"
-                        onError={(e) => { e.target.onerror = null; e.target.src = "/path-to-default-image.jpg"; }}
-                      />
-                    )}
+                  {articulo.attributes.image && articulo.attributes.image.data && (
+                    <Image
+                      src={`${process.env.STRAPI_API_URL}${articulo.attributes.image.data.attributes.url}`}
+                      alt={articulo.attributes.title}
+                      layout="fill"
+                      className="object-cover object-center"
+                    />
+                )}
                   </div>
                   <Link href={`/articulo/${articulo.id}`} legacyBehavior>
                     <a className="text-xl font-semibold mb-2 hover:underline">{articulo.attributes.title}</a>

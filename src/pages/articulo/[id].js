@@ -84,8 +84,8 @@ const Articulo = ({ articulo }) => {
               <Image
                 src={authorImageUrl}
                 alt={author}
-                width={100}
-                height={100}
+                width={80}
+                height={80}
                 className="rounded-full mr-6"
               />
               <div>
