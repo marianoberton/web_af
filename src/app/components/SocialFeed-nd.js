@@ -2,10 +2,11 @@ import { FaHeart, FaComment } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
+import moment from 'moment';
 
-const SocialFeed = () => {
+const SocialFeedND = () => {
   const [posts, setPosts] = useState([]);
-  const [visiblePosts, setVisiblePosts] = useState(4); // Número de publicaciones visibles inicialmente
+  const [visiblePosts, setVisiblePosts] = useState(6); // Mostramos inicialmente 6 posts
 
   useEffect(() => {
     const fetchInstagramPosts = async () => {
@@ -19,11 +20,11 @@ const SocialFeed = () => {
           return {
             id: post.id,
             type: post.media_type,
-            username: 'agustinforchieri',
-            profilePic: '/images/profile.jpg',
+            username: 'nd_riverplate',
+            profilePic: '/images/River/logo_nd.png',
             postPic: postPic,
             description: post.caption,
-            timestamp: new Date(post.timestamp).toLocaleDateString(),
+            timestamp: post.timestamp ? moment(post.timestamp).format('DD/MM/YYYY') : 'Fecha inválida',
             likes: 0,
             comments: 0
           };
@@ -36,13 +37,13 @@ const SocialFeed = () => {
 
     const fetchTweets = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/tweets`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/tweets-nds`);
         const tweetsData = response.data.data.map(tweet => ({
           id: tweet.id,
           type: 'twitter',
           twitterUrl: tweet.attributes.twitterUrl,
         }));
-        setPosts(prevPosts => [...tweetsData, ...prevPosts]);
+        setPosts(prevPosts => [...prevPosts, ...tweetsData]); // Combina tweets con los posts de Instagram
       } catch (error) {
         console.error('Error fetching tweets:', error);
       }
@@ -51,6 +52,7 @@ const SocialFeed = () => {
     fetchInstagramPosts();
     fetchTweets();
 
+    // Cargar el script de Twitter
     const script = document.createElement('script');
     script.src = 'https://platform.twitter.com/widgets.js';
     script.async = true;
@@ -62,14 +64,13 @@ const SocialFeed = () => {
   }, []);
 
   const renderPostContent = (post) => {
-    switch(post.type) {
+    switch (post.type) {
       case 'IMAGE':
-        return <Image src={post.postPic} alt="Post" width={400} height={256} className="w-full h-auto object-cover rounded-lg" />;
+        return <Image src={post.postPic} alt="Instagram Post" width={400} height={256} className="w-full h-auto object-cover rounded-lg shadow-md" />;
       case 'VIDEO':
-      case 'REELS':
         return (
-          <div className="relative w-full" style={{ paddingTop: '177.78%' /* 9:16 aspect ratio */ }}>
-            <video controls className="absolute top-0 left-0 w-full h-full object-cover rounded-lg">
+          <div className="relative w-full" style={{ paddingTop: '177.78%' }}>
+            <video controls className="absolute top-0 left-0 w-full h-full object-cover rounded-lg shadow-md">
               <source src={post.postPic} type="video/mp4" />
             </video>
           </div>
@@ -90,7 +91,7 @@ const SocialFeed = () => {
   };
 
   const loadMorePosts = () => {
-    setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 4); // Incrementa el número de publicaciones visibles
+    setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 6); // Carga 6 más en lugar de 4
   };
 
   return (
@@ -100,42 +101,39 @@ const SocialFeed = () => {
         <div className="col-span-2 flex flex-col md:flex-row md:space-x-10">
           <div className="flex-1 flex flex-col space-y-4">
             {posts.filter((post, index) => index % 2 === 0 && post.type !== 'twitter')
-                  .slice(0, visiblePosts / 2).map((post) => (
-              <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
-                <div className="p-4 flex items-center">
-                  <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
-                  <div>
-                    <h3 className="font-bold">{post.username}</h3>
+              .slice(0, visiblePosts / 2).map((post) => (
+                <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
+                  <div className="p-4 flex items-center">
+                    <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
+                    <div>
+                      <h3 className="font-bold">{post.username}</h3>
+                    </div>
+                  </div>
+                  {renderPostContent(post)}
+                  <div className="p-4">
+                    <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
+                    <p className="text-gray-500 text-sm">{post.timestamp}</p>
                   </div>
                 </div>
-                {renderPostContent(post)}
-                <div className="p-4">
-                  <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
-                  <p className="text-gray-500 text-sm">{post.timestamp}</p>
-                  
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
-
           <div className="flex-1 flex flex-col space-y-4">
             {posts.filter((post, index) => index % 2 !== 0 && post.type !== 'twitter')
-                  .slice(0, visiblePosts / 2).map((post) => (
-              <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
-                <div className="p-4 flex items-center">
-                  <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
-                  <div>
-                    <h3 className="font-bold">{post.username}</h3>
+              .slice(0, visiblePosts / 2).map((post) => (
+                <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
+                  <div className="p-4 flex items-center">
+                    <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
+                    <div>
+                      <h3 className="font-bold">{post.username}</h3>
+                    </div>
+                  </div>
+                  {renderPostContent(post)}
+                  <div className="p-4">
+                    <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
+                    <p className="text-gray-500 text-sm">{post.timestamp}</p>
                   </div>
                 </div>
-                {renderPostContent(post)}
-                <div className="p-4">
-                  <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
-                  <p className="text-gray-500 text-sm">{post.timestamp}</p>
-                  
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
 
@@ -151,7 +149,6 @@ const SocialFeed = () => {
           ))}
         </div>
       </div>
-
       {visiblePosts < posts.length && (
         <div className="flex justify-center mt-10">
           <button
@@ -166,4 +163,4 @@ const SocialFeed = () => {
   );
 };
 
-export default SocialFeed;
+export default SocialFeedND;

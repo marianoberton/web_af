@@ -225,3 +225,130 @@ button:hover {
   width: 100%;
   position: relative;
 }
+
+.instagram-post,
+.twitter-post {
+  border: none;
+  box-shadow: none;
+  margin-bottom: 20px;
+}
+
+.instagram-post img,
+.twitter-post img,
+.instagram-post video,
+.twitter-post video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.instagram-post .content,
+.twitter-post .content {
+  padding: 10px;
+}
+
+.instagram-post .header,
+.twitter-post .header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.instagram-post .header img,
+.twitter-post .header img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.instagram-post .actions,
+.twitter-post .actions {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.instagram-post .actions .icon,
+.twitter-post .actions .icon {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.instagram-post .actions .icon svg,
+.twitter-post .actions .icon svg {
+  margin-right: 5px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.relative {
+  position: relative;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-0 {
+  height: 0;
+}
+
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.rounded-lg {
+  border-radius: 8px;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.text-gray-300 {
+  color: #d1d5db;
+}
+
+.text-blue-300 {
+  color: #93c5fd;
+}
+
+.hover\:underline:hover {
+  text-decoration: underline;
+}

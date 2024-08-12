@@ -23,7 +23,7 @@ const FeaturedProjects = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {proyectosData.map((proyecto) => (
           <div key={proyecto.id} className="p-5 bg-gray-100 rounded-lg shadow-lg text-center">
-            <FaFileSignature className="text-6xl text-blue-800 mx-auto mb-4" />
+            <FaFileSignature className="text-6xl text-blue-900 mx-auto mb-4" />
             <h3 className="text-2xl font-semibold mb-2">{proyecto.titulo}</h3>
             <p className="text-lg mb-4">{proyecto.descripcion}</p>
           </div>

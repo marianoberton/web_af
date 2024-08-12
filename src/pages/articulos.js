@@ -5,7 +5,7 @@ import Footer from '../app/components/Footer';
 import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Image from 'next/image';
-import { fetchAPI } from '../../lib/api'; // Asegúrate de que la ruta sea correcta
+import { fetchAPI } from '../../lib/api';
 
 export async function getStaticProps() {
   try {
@@ -16,6 +16,7 @@ export async function getStaticProps() {
       props: {
         articulosData: articulosData || [],
       },
+      revalidate: 1,
     };
   } catch (error) {
     console.error('Error fetching articles:', error);

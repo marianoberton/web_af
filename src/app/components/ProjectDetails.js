@@ -2,7 +2,7 @@ const ProjectDetails = ({ proyecto }) => (
     <div id={`project-details-${proyecto.id}`} className="mt-4">
       <p className="text-lg mb-4"> {proyecto.introduccion}</p>
       <p className="text-lg mb-4"><strong>Objetivos:</strong> {proyecto.objetivos}</p>
-      <div className="bg-yellow-200 p-6 rounded-lg mb-4 shadow-md">
+      <div className="bg-blue-200 p-6 rounded-lg mb-4 shadow-md">
         <p className="text-lg mb-4"><strong>Beneficios del Proyecto:</strong></p>
         <ul className="list-disc list-inside ml-5 leading-relaxed">
           {proyecto.beneficios.map((beneficio, index) => (

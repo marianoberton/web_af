@@ -25,12 +25,13 @@ const Footer = () => {
               <a className="text-2xl font-bold text-gray-800">AGUSTIN FORCHIERI</a>
             </Link>
           </div>
+          {/* Botones con Logos */}
           <div className="flex space-x-4">
             <a href="https://www.cariverplate.com.ar/" target="_blank" rel="noopener noreferrer">
               <Image src="/images/River/river-logo.png" alt="River Plate" width={40} height={40} />
             </a>
             <a href="https://www.hcdiputados-ba.gov.ar/" target="_blank" rel="noopener noreferrer">
-              <Image src="/images/logo-legis.png" alt="Cámara de Diputados" width={40} height={40} />
+              <Image src="/images/logo-legis.png" alt="Cámara de Diputados" width={140} height={140} className="object-contain" />
             </a>
           </div>
         </div>

@@ -5,9 +5,14 @@ import Link from 'next/link';
 import { FaTwitter, FaInstagram } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import axios from 'axios';
+import SocialFeedND from '../app/components/SocialFeed-nd';
+
 
 const River = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [tweets, setTweets] = useState([]);
+  const [instagramPosts, setInstagramPosts] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,6 +26,70 @@ const River = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    const fetchTweets = async () => {
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/tweets-nds`);
+        const tweetsData = response.data.data.map(tweet => ({
+          id: tweet.id,
+          twitterUrl: tweet.attributes.twitterUrl,
+        }));
+        setTweets(tweetsData);
+      } catch (error) {
+        console.error('Error fetching tweets:', error);
+      }
+    };
+
+    fetchTweets();
+
+    // Load Twitter script
+    const script = document.createElement('script');
+    script.src = 'https://platform.twitter.com/widgets.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  useEffect(() => {
+    const fetchInstagramPosts = async () => {
+      try {
+        const response = await axios.get('/api/instagram-feed');
+        const instagramData = response.data.data.map(post => ({
+          id: post.id,
+          type: post.media_type,
+          postPic: post.media_url,
+        }));
+        setInstagramPosts(instagramData.slice(0, 4)); // Limitar a 4 posts
+      } catch (error) {
+        console.error('Error fetching Instagram posts:', error);
+      }
+    };
+
+    fetchInstagramPosts();
+  }, []);
+
+  const renderPostContent = (post) => {
+    switch(post.type) {
+      case 'IMAGE':
+        return <Image src={post.postPic} alt="Instagram Post" width={400} height={256} className="w-full h-auto object-cover rounded-lg shadow-md transition-transform transform hover:scale-105 duration-300" />;
+      case 'VIDEO':
+        return (
+          <div className="relative w-full" style={{ paddingTop: '177.78%' /* 9:16 aspect ratio */ }}>
+            <video controls className="absolute top-0 left-0 w-full h-full object-cover rounded-lg shadow-md transition-transform transform hover:scale-105 duration-300">
+              <source src={post.postPic} type="video/mp4" />
+            </video>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const heroVideoUrl = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/river_hero_35b6772ac6.mp4`;
 
   return (
     <div>
@@ -43,7 +112,7 @@ const River = () => {
           />
         ) : (
           <video autoPlay loop muted className="absolute w-full h-full object-cover">
-            <source src="/videos/river_hero.mp4" type="video/mp4" />
+            <source src={heroVideoUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         )}
@@ -86,7 +155,7 @@ const River = () => {
             </p>
             <Image src="/images/River/af_y_dirigentes_cancha.jpeg" alt="River Plate 2" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg mb-4" />
             <p className="text-lg leading-relaxed">
-              Para mí, ser dirigente de River es mucho más que un título: es una misión y una responsabilidad enorme. Defender nuestros colores, nuestra historia y nuestra identidad es algo que llevo con orgullo y dedicación. Es impresionante ver el compromiso de los hinchas y empleados del club, trabajando juntos para que River siga siendo el más grande de la Argentina. Todos los que llevamos a River en el corazón tenemos la responsabilidad de seguir este legado, para que la grandeza que nos define hoy siga viva en nuestros hijos y en los hijos de ellos.
+              Para mí, ser dirigente de River es mucho más que un título: es una misión y una responsabilidad enorme. Defender nuestros colores, nuestra historia y nuestra identidad es algo que llevo con orgullo y dedicación. Es impresionante ver el compromiso de los hinchas y empleados del club, trabajando juntos para que River siga siendo el más grande de la Argentina. Todos los que llevamos a River en el corazón tenemos la responsabilidad de seguir este legado, para que la grandeza que nos define hoy siga viva en nuestros hijos y en               los hijos de ellos.
             </p>
           </div>
         </section>
@@ -108,56 +177,9 @@ const River = () => {
           </div>
         </section>
 
-       {/* Videos y Tweets */}
-        <section className="py-16 bg-gray-100 agrupacion-section relative">
-          <div className="container mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="md:col-span-2">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4 ml-4">Instagram</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="aspect-w-16 aspect-h-9">
-                    <video className="w-full h-full rounded-lg shadow-md transition-transform transform hover:scale-105 duration-300" controls muted>
-                      <source src="/videos/nd1.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                  <div className="aspect-w-16 aspect-h-9">
-                    <video className="w-full h-full rounded-lg shadow-md transition-transform transform hover:scale-105 duration-300" controls muted>
-                      <source src="/videos/nd2.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                  <div className="aspect-w-16 aspect-h-9">
-                    <video className="w-full h-full rounded-lg shadow-md transition-transform transform hover:scale-105 duration-300" controls muted>
-                      <source src="/videos/nd3.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                  <div className="aspect-w-16 aspect-h-9">
-                    <video className="w-full h-full rounded-lg shadow-md transition-transform transform hover:scale-105 duration-300" controls muted>
-                      <source src="/videos/nd4.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                </div>
-              </div>
-              <div className="md:col-span-1">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Últimos Tweets</h3>
-                <div className="space-y-4">
-                  <blockquote className="twitter-tweet">
-                    <p lang="es" dir="ltr"><a href="https://twitter.com/nd_riverplate/status/1714220029510652204">https://twitter.com/nd_riverplate/status/1714220029510652204</a></p>&mdash; nd_riverplate (@nd_riverplate) <a href="https://twitter.com/nd_riverplate/status/1714220029510652204?ref_src=twsrc%5Etfw">Oct 17, 2023</a></blockquote>
-                  <blockquote className="twitter-tweet">
-                    <p lang="es" dir="ltr"><a href="https://twitter.com/nd_riverplate/status/21">https://twitter.com/nd_riverplate/status/21</a></p>&mdash; nd_riverplate (@nd_riverplate) <a href="https://twitter.com/nd_riverplate/status/1812703446614614112?ref_src=twsrc%5Etfw">Oct 18, 2023</a></blockquote>
-                  <blockquote className="twitter-tweet">
-                    <p lang="es" dir="ltr"><a href="https://twitter.com/nd_riverplate/status/22">https://twitter.com/nd_riverplate/status/22</a></p>&mdash; nd_riverplate (@nd_riverplate) <a href="https://twitter.com/nd_riverplate/status/1811834512906809823?ref_src=twsrc%5Etfw">Oct 19, 2023</a></blockquote>
-                  <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SocialFeedND />
 
-     {/* Call to Action */}
+        {/* Call to Action */}
         {/* 
         <section className="py-16 bg-red-600 text-white text-center relative overflow-hidden">
           <div className="flex justify-center items-center mb-8">
@@ -170,7 +192,6 @@ const River = () => {
           </Link>
         </section> 
         */}
-
       </main>
 
       <Footer />

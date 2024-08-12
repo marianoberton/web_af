@@ -9,8 +9,27 @@ import SocialFeed from '../app/components/SocialFeed';
 import Gallery from '../app/components/Gallery';
 import Footer from '../app/components/Footer';
 import Contacto from '@/components/contacto';
+import { fetchAPI } from '../../lib/api'; // Asegúrate de que la ruta sea correcta
 
-export default function Home() {
+export async function getStaticProps() {
+  try {
+    const mediaData = await fetchAPI('/medios?populate=*');
+    return {
+      props: {
+        media: mediaData.data || [],
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching media data:', error.message);
+    return {
+      props: {
+        media: [],
+      },
+    };
+  }
+}
+
+const Home = ({ media }) => {
   return (
     <div>
       <Head>
@@ -26,12 +45,13 @@ export default function Home() {
         <Biography />
         <FeaturedProjects />
         <RiverPlate />
-        <FeaturedNews />
+        <FeaturedNews media={media} />
         <SocialFeed />
-        
-       </main>
-      <Contacto />  
+      </main>
+      <Contacto />
       <Footer />
     </div>
   );
-}
+};
+
+export default Home;
