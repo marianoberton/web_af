@@ -98,7 +98,7 @@ const Articulos = ({ articulosData }) => {
                     <Image
                       src={`${process.env.STRAPI_API_URL}${articulo.attributes.image.data.attributes.url}`}
                       alt={articulo.attributes.title}
-                      layout="fill"
+                      fill
                       className="object-cover object-center"
                     />
                 )}
