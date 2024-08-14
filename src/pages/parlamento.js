@@ -98,12 +98,12 @@ const Proyectos = () => {
           handleVerMas={handleVerMas} 
           selectedProject={selectedProject} 
         />
-        <ProjectsSection 
+        {/* <ProjectsSection 
           title="Próximos Proyectos" 
           projects={proximosProyectos} 
           handleVerMas={handleVerMas} 
           selectedProject={selectedProject} 
-        />
+        /> */}
       </main>
 
       <Footer />

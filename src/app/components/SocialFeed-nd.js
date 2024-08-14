@@ -1,4 +1,3 @@
-import { FaHeart, FaComment } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
@@ -6,7 +5,7 @@ import moment from 'moment';
 
 const SocialFeedND = () => {
   const [posts, setPosts] = useState([]);
-  const [visiblePosts, setVisiblePosts] = useState(6); // Mostramos inicialmente 6 posts
+  const [visiblePosts, setVisiblePosts] = useState(9); // Mostramos inicialmente 9 posts, para que se distribuyan en 3 columnas
 
   useEffect(() => {
     const fetchInstagramPosts = async () => {
@@ -29,38 +28,13 @@ const SocialFeedND = () => {
             comments: 0
           };
         });
-        setPosts(prevPosts => [...instagramData, ...prevPosts]);
+        setPosts(instagramData);
       } catch (error) {
         console.error('Error fetching Instagram posts:', error);
       }
     };
 
-    const fetchTweets = async () => {
-      try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/tweets-nds`);
-        const tweetsData = response.data.data.map(tweet => ({
-          id: tweet.id,
-          type: 'twitter',
-          twitterUrl: tweet.attributes.twitterUrl,
-        }));
-        setPosts(prevPosts => [...prevPosts, ...tweetsData]); // Combina tweets con los posts de Instagram
-      } catch (error) {
-        console.error('Error fetching tweets:', error);
-      }
-    };
-
     fetchInstagramPosts();
-    fetchTweets();
-
-    // Cargar el script de Twitter
-    const script = document.createElement('script');
-    script.src = 'https://platform.twitter.com/widgets.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
   }, []);
 
   const renderPostContent = (post) => {
@@ -91,62 +65,78 @@ const SocialFeedND = () => {
   };
 
   const loadMorePosts = () => {
-    setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 6); // Carga 6 más en lugar de 4
+    setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 9); // Carga 9 más para que cubra las 3 columnas
   };
 
   return (
     <section className="p-4 md:p-10 bg-white">
       <h2 className="text-4xl font-bold mb-10 text-center">Redes Sociales</h2>
-      <div className="grid grid-cols-1 gap-4 md:gap-10 md:grid-cols-3">
-        <div className="col-span-2 flex flex-col md:flex-row md:space-x-10">
-          <div className="flex-1 flex flex-col space-y-4">
-            {posts.filter((post, index) => index % 2 === 0 && post.type !== 'twitter')
-              .slice(0, visiblePosts / 2).map((post) => (
-                <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
-                  <div className="p-4 flex items-center">
-                    <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
-                    <div>
-                      <h3 className="font-bold">{post.username}</h3>
-                    </div>
-                  </div>
-                  {renderPostContent(post)}
-                  <div className="p-4">
-                    <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
-                    <p className="text-gray-500 text-sm">{post.timestamp}</p>
+      <div className="flex flex-wrap -mx-4">
+        <div className="flex-1 px-4">
+          {posts
+            .filter((_, index) => index % 3 === 0)
+            .slice(0, visiblePosts / 3)
+            .map((post) => (
+              <div key={post.id} className="mb-10 bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+                <div className="p-4 flex items-center">
+                  <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
+                  <div>
+                    <h3 className="font-bold">{post.username}</h3>
                   </div>
                 </div>
-              ))}
-          </div>
-          <div className="flex-1 flex flex-col space-y-4">
-            {posts.filter((post, index) => index % 2 !== 0 && post.type !== 'twitter')
-              .slice(0, visiblePosts / 2).map((post) => (
-                <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
-                  <div className="p-4 flex items-center">
-                    <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
-                    <div>
-                      <h3 className="font-bold">{post.username}</h3>
-                    </div>
-                  </div>
-                  {renderPostContent(post)}
-                  <div className="p-4">
-                    <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
-                    <p className="text-gray-500 text-sm">{post.timestamp}</p>
-                  </div>
+                {renderPostContent(post)}
+                <div className="p-4">
+                  <p className="mb-2">
+                    <strong>{post.username}</strong> {post.description}
+                  </p>
+                  <p className="text-gray-500 text-sm">{post.timestamp}</p>
                 </div>
-              ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 md:gap-10">
-          {posts.filter(post => post.type === 'twitter').map((post) => (
-            <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
-              <div className="p-4 flex justify-center">
-                <blockquote className="twitter-tweet" data-dnt="true" data-theme="light" style={{ width: '100%' }}>
-                  <a href={post.twitterUrl}></a>
-                </blockquote>
               </div>
-            </div>
-          ))}
+            ))}
+        </div>
+        <div className="flex-1 px-4">
+          {posts
+            .filter((_, index) => index % 3 === 1)
+            .slice(0, visiblePosts / 3)
+            .map((post) => (
+              <div key={post.id} className="mb-10 bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+                <div className="p-4 flex items-center">
+                  <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
+                  <div>
+                    <h3 className="font-bold">{post.username}</h3>
+                  </div>
+                </div>
+                {renderPostContent(post)}
+                <div className="p-4">
+                  <p className="mb-2">
+                    <strong>{post.username}</strong> {post.description}
+                  </p>
+                  <p className="text-gray-500 text-sm">{post.timestamp}</p>
+                </div>
+              </div>
+            ))}
+        </div>
+        <div className="flex-1 px-4">
+          {posts
+            .filter((_, index) => index % 3 === 2)
+            .slice(0, visiblePosts / 3)
+            .map((post) => (
+              <div key={post.id} className="mb-10 bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+                <div className="p-4 flex items-center">
+                  <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
+                  <div>
+                    <h3 className="font-bold">{post.username}</h3>
+                  </div>
+                </div>
+                {renderPostContent(post)}
+                <div className="p-4">
+                  <p className="mb-2">
+                    <strong>{post.username}</strong> {post.description}
+                  </p>
+                  <p className="text-gray-500 text-sm">{post.timestamp}</p>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
       {visiblePosts < posts.length && (
