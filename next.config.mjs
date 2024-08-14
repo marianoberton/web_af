@@ -5,6 +5,7 @@ const nextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true,
+    domains: ['af-strapi-8y5n.onrender.com'], // Añade el dominio permitido para las imágenes
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -18,4 +19,3 @@ const nextConfig = {
 };
 
 export default nextConfig;
-

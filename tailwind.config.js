@@ -13,6 +13,12 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        blue: {
+          '800': '#4D70CE', // Sobrescribe bg-blue-800 y text-blue-800 con el nuevo color
+          '900': '#3A549B',
+        },
+      },
     },
   },
   plugins: [

@@ -19,19 +19,19 @@ const Header = () => {
         </div>
         <nav className="hidden md:flex space-x-4">
           <Link href="/" legacyBehavior>
-            <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300">Inicio</a>
+            <a className="text-gray-800 font-semibold hover:text-blue-800 transition duration-300">Inicio</a>
           </Link>
           <Link href="/biografia" legacyBehavior>
-            <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300">Biografía</a>
+            <a className="text-gray-800 font-semibold hover:text-blue-800 transition duration-300">Biografía</a>
           </Link>
           <Link href="/parlamento" legacyBehavior>
-            <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300">Legislatura</a>
+            <a className="text-gray-800 font-semibold hover:text-blue-800 transition duration-300">Legislatura</a>
           </Link>
           <Link href="/riverplate" legacyBehavior>
             <a className="text-gray-800 font-semibold hover:text-red-500 transition duration-300">River</a>
           </Link>
           <Link href="/articulos" legacyBehavior>
-            <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300">Artículos</a>
+            <a className="text-gray-800 font-semibold hover:text-blue-800 transition duration-300">Artículos</a>
           </Link>
         </nav>
         <div className="md:hidden">
@@ -44,19 +44,19 @@ const Header = () => {
         <div className="md:hidden bg-white shadow-lg p-5">
           <nav className="flex flex-col space-y-4">
             <Link href="/" legacyBehavior>
-              <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300" onClick={toggleMenu}>Inicio</a>
+              <a className="text-gray-800 font-semibold hover:text-blue-800 transition duration-300" onClick={toggleMenu}>Inicio</a>
             </Link>
             <Link href="/biografia" legacyBehavior>
-              <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300" onClick={toggleMenu}>Biografía</a>
+              <a className="text-gray-800 font-semibold hover:text-blue-800 transition duration-300" onClick={toggleMenu}>Biografía</a>
             </Link>
             <Link href="/parlamento" legacyBehavior>
-              <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300" onClick={toggleMenu}>Legislatura</a>
+              <a className="text-gray-800 font-semibold hover:text-blue-800 transition duration-300" onClick={toggleMenu}>Legislatura</a>
             </Link>
             <Link href="/riverplate" legacyBehavior>
               <a className="text-gray-800 font-semibold hover:text-red-500 transition duration-300" onClick={toggleMenu}>River</a>
             </Link>
             <Link href="/articulos" legacyBehavior>
-              <a className="text-gray-800 font-semibold hover:text-yellow-500 transition duration-300" onClick={toggleMenu}>Artículos</a>
+              <a className="text-gray-800 font-semibold hover:text-blue-800 transition duration-300" onClick={toggleMenu}>Artículos</a>
             </Link>
           </nav>
         </div>

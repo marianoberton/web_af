@@ -16,7 +16,6 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background-image: url('/images/hero-background11.jpg');
   background-size: cover;
   background-position: center;
 }
