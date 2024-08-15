@@ -96,7 +96,7 @@ const Articulos = ({ articulosData }) => {
                   <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
                   {articulo.attributes.image && articulo.attributes.image.data && (
                     <Image
-                      src={`${process.env.STRAPI_API_URL}${articulo.attributes.image.data.attributes.url}`}
+                      src={articulo.attributes.image.data.attributes.url}
                       alt={articulo.attributes.title}
                       fill
                       className="object-cover object-center"

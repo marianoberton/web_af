@@ -1,38 +1,95 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const HeroSection = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  };
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const images = [
-    "https://af-strapi-8y5n.onrender.com/uploads/perfil_otra_hero_edit_aa813a88ba.jpg",
-    "https://af-strapi-8y5n.onrender.com/uploads/perfil_legislativo41_33689cd5c8.jpg",
+    "https://res.cloudinary.com/dedryjsvs/image/upload/v1723741867/perfil_otra_hero_edit_4063d04b7f.jpg",
+    "https://res.cloudinary.com/dedryjsvs/image/upload/v1723741910/perfil_legislativo41_90aee2234f.jpg",
   ];
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
+    }, 5000); // Cambia la imagen cada 5 segundos
+
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
   return (
-    <div className="hero mb-10">
-      <Slider {...settings}>
+    <div className="hero-container">
+      <div className="hero-section" style={{ position: 'relative', height: '400px', overflow: 'hidden' }}>
         {images.map((image, index) => (
           <div
             key={index}
-            className="h-96 relative bg-cover bg-center"
-            style={{ backgroundImage: `url(${image})` }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              opacity: index === currentSlide ? 1 : 0,
+              transition: 'opacity 0.5s ease-in-out',
+            }}
           >
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-end justify-end p-5">
-              <h1 className="text-white text-5xl font-bold">Legislatura</h1>
+            <Image
+              src={image}
+              alt={`Slide ${index + 1}`}
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
+            <div
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                display: 'flex',
+                alignItems: 'flex-end',
+                justifyContent: 'flex-end',
+                padding: '20px',
+              }}
+            >
+              <h1 style={{ color: 'white', fontSize: '3rem', fontWeight: 'bold' }}>Legislatura</h1>
             </div>
           </div>
         ))}
-      </Slider>
+        
+        {/* Indicadores de diapositivas (dots) */}
+        <div style={{ 
+          position: 'absolute', 
+          bottom: '20px', 
+          left: '50%', 
+          transform: 'translateX(-50%)', 
+          display: 'flex', 
+          zIndex: 10 
+        }}>
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              style={{
+                width: '12px',
+                height: '12px',
+                borderRadius: '50%',
+                border: 'none',
+                margin: '0 5px',
+                background: index === currentSlide ? 'white' : 'rgba(255,255,255,0.5)',
+                cursor: 'pointer',
+                transition: 'background 0.3s ease',
+              }}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

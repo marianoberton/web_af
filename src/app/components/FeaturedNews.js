@@ -14,7 +14,7 @@ const FeaturedNews = ({ media }) => {
           <div key={item.id} className="bg-gray-200 p-4 rounded-lg shadow-lg w-full">
             <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
               <Image
-                src={`${process.env.STRAPI_API_URL}${item.attributes.image.data.attributes.url}`}
+                src={item.attributes.image.data.attributes.url}
                 alt={item.attributes.title}
                 fill
                 className="object-cover object-center"
