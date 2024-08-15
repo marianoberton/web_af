@@ -89,7 +89,7 @@ const River = () => {
     }
   };
 
-  const heroVideoUrl = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/river_hero_9a1e47189d.mp4`;
+  const heroVideoUrl = `https://res.cloudinary.com/dedryjsvs/video/upload/v1723734464/river_hero_85f5b8f767.mp4`;
 
   return (
     <div>
@@ -105,7 +105,7 @@ const River = () => {
       <section className="relative h-[70vh] bg-cover bg-center">
         {isMobile ? (
           <Image
-            src="https://af-strapi-8y5n.onrender.com/uploads/IMG_7550_copia_3843a7384c.JPG"
+            src="https://res.cloudinary.com/dedryjsvs/image/upload/v1723735067/IMG_7550_copia_4532583e6a.jpg"
             alt="River Plate"
             layout="fill"
             className="absolute w-full h-full object-cover"
