@@ -8,7 +8,6 @@ import Image from 'next/image';
 import axios from 'axios';
 import SocialFeedND from '../app/components/SocialFeed-nd';
 
-
 const River = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [tweets, setTweets] = useState([]);
@@ -73,7 +72,7 @@ const River = () => {
   }, []);
 
   const renderPostContent = (post) => {
-    switch(post.type) {
+    switch (post.type) {
       case 'IMAGE':
         return <Image src={post.postPic} alt="Instagram Post" width={400} height={256} className="w-full h-auto object-cover rounded-lg shadow-md transition-transform transform hover:scale-105 duration-300" />;
       case 'VIDEO':
@@ -134,15 +133,20 @@ const River = () => {
             <div className="md:col-span-2">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">River</h2>
               <p className="text-lg leading-relaxed">
-  Mi vida está atravesada por River. En la infancia, recuerdo cómo contaba los días para que llegara el domingo para ir con mi familia al Monumental; siempre con mi papá y mi hermano. Deseábamos llegar a la cancha y empezar a subir las escaleras internas del estadio, hasta que por fin veíamos el pasto, la gente. Miles y miles de personas en un mismo lugar, con el mismo objetivo: compartir la pasión y alentar al más grande. Después del partido siempre había tiempo para respetar las costumbres e ir a comer una pizza todos juntos.<br /><br />
-  
-  A principios de los 90, en mi adolescencia, mi papá dejó de ir a la cancha religiosamente y llegó el tiempo de ir con mi hermano y amigos. Y, en muchos casos, solo pero siempre acompañando a River. Recuerdo subirme al colectivo 130, esperando que el recorrido sea lo más rápido posible. También en estos tiempos llegaron los viajes para ver al millonario y abrazarme con desconocidos en un grito de gol. Esperaba que publicaran el fixture para empezar a planificar con mis amigos a dónde y cómo iríamos. La única certeza que teníamos era que queríamos estar.<br /><br />
-  
-  Hoy cambiaron muchas cosas en mi vida menos la pasión por River. Cumplí el sueño de formar mi familia, ser quien los lleve a la cancha y les regale su primera camiseta, ver a mi hija mayor disfrutar con su abuelo esta pasión compartida. A su vez, tuve el gran honor de representar al club como Asambleísta, Secretario de la Asamblea y Prosecretario, cargo que ocupo actualmente.<br /><br />
-  
-  Para mí, ser dirigente de River es mucho más que un título: es una misión y una responsabilidad enorme. Defender nuestros colores, nuestra historia y nuestra identidad es algo que llevo con orgullo y dedicación. Es impresionante ver el compromiso de los hinchas y empleados del club, trabajando juntos para que River siga siendo el más grande de la Argentina. Todos los que llevamos a River en el corazón tenemos la responsabilidad de seguir este legado, para que la grandeza que nos define hoy siga viva en nuestros hijos y en los hijos de ellos.
-</p>
-
+                Mi vida está atravesada por River. En la infancia, recuerdo cómo contaba los días para que llegara el domingo para ir con mi familia al Monumental; siempre con mi papá y mi hermano. Deseábamos llegar a la cancha y empezar a subir las escaleras internas del estadio, hasta que por fin veíamos el pasto, la gente. Miles y miles de personas en un mismo lugar, con el mismo objetivo: compartir la pasión y alentar al más grande. Después del partido siempre había tiempo para respetar las costumbres e ir a comer una pizza todos juntos.
+              </p>
+              <br></br>
+              <p className="text-lg leading-relaxed">
+                Recuerdo subirme al colectivo 130, esperando que el recorrido sea lo más rápido posible. También en estos tiempos llegaron los viajes para ver al millonario y abrazarme con desconocidos en un grito de gol. Esperaba que publicaran el fixture para empezar a planificar con mis amigos a dónde y cómo iríamos. La única certeza que teníamos era que queríamos estar.
+              </p>
+              <br></br>
+              <p className="text-lg leading-relaxed">
+                Hoy cambiaron muchas cosas en mi vida menos la pasión por River. Cumplí el sueño de formar mi familia, ser quien los lleve a la cancha y les regale su primera camiseta, ver a mi hija mayor disfrutar con su abuelo esta pasión compartida. A su vez, tuve el gran honor de representar al club como Asambleísta, Secretario de la Asamblea y Prosecretario, cargo que ocupo actualmente.
+              </p>
+              <br></br>
+              <p className="text-lg leading-relaxed">
+                Para mí, ser dirigente de River es mucho más que un título: es una misión y una responsabilidad enorme. Defender nuestros colores, nuestra historia y nuestra identidad es algo que llevo con orgullo y dedicación. Es impresionante ver el compromiso de los hinchas y empleados del club, trabajando juntos para que River siga siendo el más grande de la Argentina. Todos los que llevamos a River en el corazón tenemos la responsabilidad de seguir este legado, para que la grandeza que nos define hoy siga viva en nuestros hijos y en los hijos de ellos.
+              </p>
             </div>
             <div className="flex flex-col gap-8">
               <Image src="/images/River/estadio2.jpeg" alt="River Plate 1" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg" />
@@ -152,15 +156,18 @@ const River = () => {
           <div className="md:hidden">
             <h2 className="text-4xl font-bold mb-4">River</h2>
             <p className="text-lg leading-relaxed mb-4">
-              Mi vida está atravesada por River. En la infancia, me acuerdo cómo contaba los días para que llegue el domingo para ir con mi familia al Monumental. Ir en el auto escuchando la previa, pensar cómo se iba a parar el equipo. Llegar a la cancha y empezar a subir las escaleras internas, hasta que por fin, veíamos el pasto, la gente. Miles y miles de personas en un mismo lugar, con el mismo objetivo: Compartir la pasión y alentar al más grande.
+              Mi vida está atravesada por River. En la infancia, recuerdo cómo contaba los días para que llegara el domingo para ir con mi familia al Monumental; siempre con mi papá y mi hermano. Deseábamos llegar a la cancha y empezar a subir las escaleras internas del estadio, hasta que por fin veíamos el pasto, la gente. Miles y miles de personas en un mismo lugar, con el mismo objetivo: compartir la pasión y alentar al más grande. Después del partido siempre había tiempo para respetar las costumbres e ir a comer una pizza todos juntos.
             </p>
             <Image src="/images/River/estadio2.jpeg" alt="River Plate 1" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg mb-4" />
             <p className="text-lg leading-relaxed mb-4">
-              Después vino la adolescencia y la juventud, los viajes para ver a River con los amigos que el club me dio y abrazarme con desconocidos en un grito de gol. Esperaba que publicaran el fixture para empezar a planificar con mis amigos a dónde y cómo iríamos. La única certeza que teníamos, era que queríamos estar. Hoy cambiaron muchas cosas en mi vida menos la pasión por River. Cumplí el sueño de formar mi familia, ser yo quien los lleve a la cancha y les regale su primera camiseta. A su vez, tuve el gran honor de representar al club como Asambleísta, Secretario de la Asamblea y Prosecretario, cargo que ocupo actualmente.
+              Recuerdo subirme al colectivo 130, esperando que el recorrido sea lo más rápido posible. También en estos tiempos llegaron los viajes para ver al millonario y abrazarme con desconocidos en un grito de gol. Esperaba que publicaran el fixture para empezar a planificar con mis amigos a dónde y cómo iríamos. La única certeza que teníamos era que queríamos estar.
             </p>
             <Image src="/images/River/af_y_dirigentes_cancha.jpeg" alt="River Plate 2" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg mb-4" />
+            <p className="text-lg leading-relaxed mb-4">
+              Hoy cambiaron muchas cosas en mi vida menos la pasión por River. Cumplí el sueño de formar mi familia, ser quien los lleve a la cancha y les regale su primera camiseta, ver a mi hija mayor disfrutar con su abuelo esta pasión compartida. A su vez, tuve el gran honor de representar al club como Asambleísta, Secretario de la Asamblea y Prosecretario, cargo que ocupo actualmente.
+            </p>
             <p className="text-lg leading-relaxed">
-              Para mí, ser dirigente de River es mucho más que un título: es una misión y una responsabilidad enorme. Defender nuestros colores, nuestra historia y nuestra identidad es algo que llevo con orgullo y dedicación. Es impresionante ver el compromiso de los hinchas y empleados del club, trabajando juntos para que River siga siendo el más grande de la Argentina. Todos los que llevamos a River en el corazón tenemos la responsabilidad de seguir este legado, para que la grandeza que nos define hoy siga viva en nuestros hijos y en               los hijos de ellos.
+              Para mí, ser dirigente de River es mucho más que un título: es una misión y una responsabilidad enorme. Defender nuestros colores, nuestra historia y nuestra identidad es algo que llevo con orgullo y dedicación. Es impresionante ver el compromiso de los hinchas y empleados del club, trabajando juntos para que River siga siendo el más grande de la Argentina. Todos los que llevamos a River en el corazón tenemos la responsabilidad de seguir este legado, para que la grandeza que nos define hoy siga viva en nuestros hijos y en los hijos de ellos.
             </p>
           </div>
         </section>

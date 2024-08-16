@@ -33,7 +33,9 @@ const Proyectos = () => {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/proyectos-presentados`);
         const proyectosData = response.data.data.map(proyecto => ({
           id: proyecto.id,
-          ...proyecto.attributes.data
+          caratula: proyecto.attributes.data.caratula,
+          descripcion: proyecto.attributes.data.descripcion,
+          titulo: proyecto.attributes.titulo // O puedes utilizar `caratula` en lugar de `titulo` si lo prefieres
         }));
         setProyectosPresentados(proyectosData);
       } catch (error) {
@@ -62,13 +64,13 @@ const Proyectos = () => {
   const handleVerMas = (proyecto) => {
     setSelectedProject(selectedProject === proyecto ? null : proyecto);
     setTimeout(() => {
-      if (typeof window !== 'undefined') {
+      if (typeof window !== 'undefined' && document.querySelector('header')) { // Asegúrate de que el header existe
         const headerOffset = document.querySelector('header').offsetHeight;
         const element = document.getElementById(`project-details-${proyecto.id}`);
         if (element) {
           const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
           const offsetPosition = elementPosition - headerOffset;
-
+  
           window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth',
@@ -77,6 +79,7 @@ const Proyectos = () => {
       }
     }, 100);
   };
+  
 
   return (
     <div>

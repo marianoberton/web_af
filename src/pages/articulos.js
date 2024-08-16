@@ -62,7 +62,7 @@ const Articulos = ({ articulosData }) => {
       </div>
 
       <main className="p-5 container mx-auto">
-        <div className="flex justify-center mb-10">
+        {/* <div className="flex justify-center mb-10">
           <button
             onClick={() => filtrarArticulos('Todas')}
             className={`px-4 py-2 mr-2 ${filtro === 'Todas' ? 'bg-gray-500 text-white' : 'bg-gray-200 text-gray-800'} rounded`}
@@ -81,7 +81,7 @@ const Articulos = ({ articulosData }) => {
           >
             River Plate
           </button>
-        </div>
+        </div> */}
 
         <InfiniteScroll
           dataLength={articulosFiltrados.length}

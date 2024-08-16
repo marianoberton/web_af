@@ -35,11 +35,11 @@ const Articulo = ({ articulo }) => {
   const { title, summary, image, content, descripcion, author, author_img } = attributes;
 
   const imageUrl = image?.data?.attributes?.url 
-    ? `${process.env.STRAPI_API_URL}${image.data.attributes.url}` 
+    ? `${image.data.attributes.url}` 
     : '/images/default-image.jpg';
 
   const authorImageUrl = author_img?.data?.attributes?.url 
-    ? `${process.env.STRAPI_API_URL}${author_img.data.attributes.url}` 
+    ? `${author_img.data.attributes.url}` 
     : '/images/default-author.jpg';
 
   return (

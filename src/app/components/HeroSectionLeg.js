@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const images = [
     "https://res.cloudinary.com/dedryjsvs/image/upload/v1723741867/perfil_otra_hero_edit_4063d04b7f.jpg",
@@ -10,12 +11,29 @@ const HeroSection = () => {
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-    }, 5000); // Cambia la imagen cada 5 segundos
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
-    return () => clearInterval(timer);
-  }, [images.length]);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) {
+      const timer = setInterval(() => {
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
+      }, 5000); // Cambia la imagen cada 5 segundos
+
+      return () => clearInterval(timer);
+    } else {
+      setCurrentSlide(1); // Mostrar la segunda imagen en móviles
+    }
+  }, [isMobile, images.length]);
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
@@ -64,31 +82,33 @@ const HeroSection = () => {
         ))}
         
         {/* Indicadores de diapositivas (dots) */}
-        <div style={{ 
-          position: 'absolute', 
-          bottom: '20px', 
-          left: '50%', 
-          transform: 'translateX(-50%)', 
-          display: 'flex', 
-          zIndex: 10 
-        }}>
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              style={{
-                width: '12px',
-                height: '12px',
-                borderRadius: '50%',
-                border: 'none',
-                margin: '0 5px',
-                background: index === currentSlide ? 'white' : 'rgba(255,255,255,0.5)',
-                cursor: 'pointer',
-                transition: 'background 0.3s ease',
-              }}
-            />
-          ))}
-        </div>
+        {!isMobile && (
+          <div style={{ 
+            position: 'absolute', 
+            bottom: '20px', 
+            left: '50%', 
+            transform: 'translateX(-50%)', 
+            display: 'flex', 
+            zIndex: 10 
+          }}>
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  border: 'none',
+                  margin: '0 5px',
+                  background: index === currentSlide ? 'white' : 'rgba(255,255,255,0.5)',
+                  cursor: 'pointer',
+                  transition: 'background 0.3s ease',
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

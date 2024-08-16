@@ -70,7 +70,7 @@ const SocialFeedND = () => {
 
   return (
     <section className="p-4 md:p-10 bg-white">
-      <h2 className="text-4xl font-bold mb-10 text-center">Redes Sociales</h2>
+      {/* <h2 className="text-4xl font-bold mb-10 text-center">Redes Sociales</h2> */}
       <div className="flex flex-wrap -mx-4">
         <div className="flex-1 px-4">
           {posts
