@@ -1,8 +1,12 @@
-const Videos = ({ videosData }) => (
+const Videos = ({ videosData }) => {
+  // Crear una copia del array y ordenar los videos por ID en orden descendente
+  const sortedVideosData = [...videosData].sort((a, b) => b.id - a.id);
+
+  return (
     <div className="mt-10">
       <h2 className="text-4xl font-bold mb-5 text-center">Exposiciones en la Cámara de Diputados</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {videosData.map((video, index) => (
+        {sortedVideosData.reverse().map((video, index) => (
           <div key={index} className="w-full relative" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
             <iframe
               src={`https://www.youtube.com/embed/${video.id}`}
@@ -17,6 +21,6 @@ const Videos = ({ videosData }) => (
       </div>
     </div>
   );
-  
-  export default Videos;
-  
+};
+
+export default Videos;

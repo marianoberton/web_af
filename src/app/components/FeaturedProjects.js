@@ -1,17 +1,17 @@
 import Link from 'next/link';
-import { FaFileSignature } from 'react-icons/fa';
+import { FaFileSignature, FaFileAlt, FaScroll, FaSearch, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 const proyectosData = [
   {
     id: 1,
-    titulo: 'Boleta Única de Papel',
-    descripcion: 'Implementación de un sistema de votación más transparente y accesible a través de la boleta única de papel.',
+    titulo: 'Pedido de informes sobre el Fondo de Fortalecimiento Fiscal Municipal',
+    descripcion: 'Pedido de informes por la demora en el abono del Fondo de Fortalecimiento Fiscal Municipal',
     imagen: '/images/boleta-unica.jpg',
   },
   {
     id: 2,
     titulo: 'Adhesión al RIGI',
-    descripcion: 'Adhesión al Régimen de Incentivos para Grandes Inversiones (RIGI).',
+    descripcion: 'La Provincia de Buenos Aires debe adherirse al Régimen de Incentivos a Grandes Inversiones (RIG) y desde el bloque PRO propusimos un proyecto de ley para avanzar en ese sentido. Queremos una Provincia productiva, con desarrollo y oportunidades',
     imagen: '/images/gnl3.jpg',
   }
 ];
@@ -23,7 +23,7 @@ const FeaturedProjects = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {proyectosData.map((proyecto) => (
           <div key={proyecto.id} className="p-5 bg-gray-100 rounded-lg shadow-lg text-center">
-            <FaFileSignature className="text-6xl text-blue-800 mx-auto mb-4" />
+            <FaFileAlt className="text-6xl text-blue-800 mx-auto mb-4" />
             <h3 className="text-2xl font-semibold mb-2">{proyecto.titulo}</h3>
             <p className="text-lg mb-4">{proyecto.descripcion}</p>
           </div>

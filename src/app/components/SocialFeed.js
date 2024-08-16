@@ -1,34 +1,41 @@
-import { FaHeart, FaComment } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
 
 const SocialFeed = () => {
   const [posts, setPosts] = useState([]);
-  const [visiblePosts, setVisiblePosts] = useState(4); // Número de publicaciones visibles inicialmente
+  const [visiblePosts, setVisiblePosts] = useState(2);
 
   useEffect(() => {
     const fetchInstagramPosts = async () => {
       try {
-        const response = await axios.get('/api/instagram-feed');
-        const instagramData = response.data.data.map(post => {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/ig-posts?populate=*`);
+        const instagramData = response.data.data.map(item => {
+          const post = item.attributes.data_ig;
           let postPic = post.media_url;
           if (post.media_type === 'CAROUSEL_ALBUM') {
-            postPic = [post.media_url];
+            postPic = [post.media_url]; 
           }
           return {
-            id: post.id,
+            id: item.id, // Asegúrate de usar el id correcto aquí
             type: post.media_type,
             username: 'agustinforchieri',
             profilePic: '/images/profile.jpg',
             postPic: postPic,
             description: post.caption,
-            timestamp: new Date(post.timestamp).toLocaleDateString(),
+            timestamp: new Date(post.timestamp).toLocaleDateString('es-ES', {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+            }),
             likes: 0,
             comments: 0
           };
         });
-        setPosts(prevPosts => [...instagramData, ...prevPosts]);
+
+        // Ordenar por id de manera descendente
+        const sortedInstagramData = instagramData.sort((a, b) => b.id - a.id);
+        setPosts(prevPosts => [...sortedInstagramData, ...prevPosts]);
       } catch (error) {
         console.error('Error fetching Instagram posts:', error);
       }
@@ -43,6 +50,18 @@ const SocialFeed = () => {
           twitterUrl: tweet.attributes.twitterUrl,
         }));
         setPosts(prevPosts => [...tweetsData, ...prevPosts]);
+
+        const script = document.createElement('script');
+        script.src = 'https://platform.twitter.com/widgets.js';
+        script.async = true;
+        script.onload = () => {
+          window.twttr.widgets.load();
+        };
+        document.body.appendChild(script);
+
+        return () => {
+          document.body.removeChild(script);
+        };
       } catch (error) {
         console.error('Error fetching tweets:', error);
       }
@@ -50,15 +69,6 @@ const SocialFeed = () => {
 
     fetchInstagramPosts();
     fetchTweets();
-
-    const script = document.createElement('script');
-    script.src = 'https://platform.twitter.com/widgets.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
   }, []);
 
   const renderPostContent = (post) => {
@@ -68,7 +78,7 @@ const SocialFeed = () => {
       case 'VIDEO':
       case 'REELS':
         return (
-          <div className="relative w-full" style={{ paddingTop: '177.78%' /* 9:16 aspect ratio */ }}>
+          <div className="relative w-full" style={{ paddingTop: '177.78%' }}>
             <video controls className="absolute top-0 left-0 w-full h-full object-cover rounded-lg">
               <source src={post.postPic} type="video/mp4" />
             </video>
@@ -90,69 +100,84 @@ const SocialFeed = () => {
   };
 
   const loadMorePosts = () => {
-    setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 4); // Incrementa el número de publicaciones visibles
+    setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 2);
   };
+
+  const instagramPosts = posts.filter(post => post.type !== 'twitter');
+  const tweets = posts.filter(post => post.type === 'twitter');
 
   return (
     <section className="p-4 md:p-10 bg-white">
       <h2 className="text-4xl font-bold mb-10 text-center">Redes Sociales</h2>
-      <div className="grid grid-cols-1 gap-4 md:gap-10 md:grid-cols-3">
-        <div className="col-span-2 flex flex-col md:flex-row md:space-x-10">
-          <div className="flex-1 flex flex-col space-y-4">
-            {posts.filter((post, index) => index % 2 === 0 && post.type !== 'twitter')
-                  .slice(0, visiblePosts / 2).map((post) => (
-              <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
-                <div className="p-4 flex items-center">
-                  <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
-                  <div>
-                    <h3 className="font-bold">{post.username}</h3>
-                  </div>
-                </div>
-                {renderPostContent(post)}
-                <div className="p-4">
-                  <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
-                  <p className="text-gray-500 text-sm">{post.timestamp}</p>
-                  
-                </div>
-              </div>
-            ))}
+      
+      {/* Vista móvil */}
+      <div className="md:hidden flex flex-col space-y-4">
+        {/* Tweets */}
+        {tweets.map((post) => (
+          <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
+            <div className="p-4 flex justify-center">
+              <blockquote className="twitter-tweet" data-dnt="true" data-theme="light" style={{ width: '100%', marginBottom: 0 }}>
+                <a href={post.twitterUrl}></a>
+              </blockquote>
+            </div>
           </div>
-
-          <div className="flex-1 flex flex-col space-y-4">
-            {posts.filter((post, index) => index % 2 !== 0 && post.type !== 'twitter')
-                  .slice(0, visiblePosts / 2).map((post) => (
-              <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
-                <div className="p-4 flex items-center">
-                  <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
-                  <div>
-                    <h3 className="font-bold">{post.username}</h3>
-                  </div>
-                </div>
-                {renderPostContent(post)}
-                <div className="p-4">
-                  <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
-                  <p className="text-gray-500 text-sm">{post.timestamp}</p>
-                  
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 md:gap-10">
-          {posts.filter(post => post.type === 'twitter').map((post) => (
-            <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
-              <div className="p-4 flex justify-center">
-                <blockquote className="twitter-tweet" data-dnt="true" data-theme="light" style={{ width: '100%' }}>
-                  <a href={post.twitterUrl}></a>
-                </blockquote>
+        ))}
+        
+        {/* Posts de Instagram */}
+        {instagramPosts.slice(0, visiblePosts).map((post) => (
+          <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
+            <div className="p-4 flex items-center">
+              <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
+              <div>
+                <h3 className="font-bold">{post.username}</h3>
               </div>
             </div>
-          ))}
-        </div>
+            {renderPostContent(post)}
+            <div className="p-4">
+              <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
+              <p className="text-gray-500 text-sm">{post.timestamp}</p>
+            </div>
+          </div>
+        ))}
       </div>
 
-      {visiblePosts < posts.length && (
+      {/* Vista desktop */}
+      <div className="hidden md:grid grid-cols-3 gap-10">
+  {/* Columna 1 y 2: Posts de Instagram */}
+  <div className="col-span-2 grid grid-cols-2 gap-10" style={{ gridAutoRows: 'min-content' }}>
+    {instagramPosts.slice(0, visiblePosts).map((post, index) => (
+      <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
+        <div className="p-4 flex items-center">
+          <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
+          <div>
+            <h3 className="font-bold">{post.username}</h3>
+          </div>
+        </div>
+        {renderPostContent(post)}
+        <div className="p-4">
+          <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
+          <p className="text-gray-500 text-sm">{post.timestamp}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Columna 3: Tweets */}
+  <div className="flex flex-col space-y-4">
+    {tweets.map((post) => (
+      <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
+        <div className="p-4 flex justify-center">
+          <blockquote className="twitter-tweet" data-dnt="true" data-theme="light" style={{ width: '100%', marginBottom: 0 }}>
+            <a href={post.twitterUrl}></a>
+          </blockquote>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+      {visiblePosts < instagramPosts.length && (
         <div className="flex justify-center mt-10">
           <button
             onClick={loadMorePosts}

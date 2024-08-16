@@ -9,7 +9,7 @@ const FeaturedNews = ({ media }) => {
   return (
     <section className="p-4 md:p-10 bg-white w-full max-w-7xl mx-auto">
       <h2 className="text-4xl font-bold mb-10 text-center">Medios</h2>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {media.map((item) => (
           <div key={item.id} className="bg-gray-200 p-4 rounded-lg shadow-lg w-full">
             <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
