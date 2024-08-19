@@ -5,7 +5,7 @@ const Description = () => (
     <hr className="border-t-2 border-gray-300 mb-5" />
     <div className="flex flex-col md:flex-row items-center">
       <div className="md:w-2/3 p-5">
-        <p className="text-xl md:text-2xl">
+        <p className="text-xl md:text-2xl text-justify">
           Presido el bloque PRO de la Cámara de Diputados de la Provincia de Buenos Aires. Asumí en diciembre de 2023 y encabecé la boleta a legisladores de la lista de Juntos por el Cambio por la Primera Sección Electoral.
         </p>
       </div>

@@ -54,10 +54,10 @@ const Articulos = ({ articulosData }) => {
 
       <Header />
 
-      <div className="bg-gray-800 text-white py-20">
+      <div className="bg-blue-800 text-white py-16">  {/* Ajustamos py-16 para un mejor balance */}
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-bold mb-4 mt-6">Artículos</h1>
-          <p className="text-xl">Novedades y Artículos de opinión</p>
+          <h1 className="text-5xl font-bold mb-2 mt-8">Artículos</h1>  {/* Añadimos mt-8 para bajar un poco el título */}
+          <p className="text-xl mb-0">Novedades y Artículos de opinión</p>
         </div>
       </div>
 
@@ -93,20 +93,20 @@ const Articulos = ({ articulosData }) => {
             {articulosFiltrados.map((articulo) => (
               <div key={articulo.id} className="bg-white p-6 rounded-lg shadow-lg flex flex-col justify-between">
                 <div>
-                  <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
-                  {articulo.attributes.image && articulo.attributes.image.data && (
-                    <Image
-                      src={articulo.attributes.image.data.attributes.url}
-                      alt={articulo.attributes.title}
-                      fill
-                      className="object-cover object-center"
-                    />
-                )}
+                  <div className="relative w-full pb-[56.25%] mb-4">
+                    {articulo.attributes.image && articulo.attributes.image.data && (
+                      <Image
+                        src={articulo.attributes.image.data.attributes.url}
+                        alt={articulo.attributes.title}
+                        fill
+                        className="absolute top-0 left-0 w-full h-full object-cover object-center"
+                      />
+                    )}
                   </div>
                   <Link href={`/articulo/${articulo.id}`} legacyBehavior>
                     <a className="text-xl font-semibold mb-2 hover:underline">{articulo.attributes.title}</a>
                   </Link>
-                  <p className="text-gray-700 mb-4">{articulo.attributes.summary.substring(0, 100)}...</p>
+                  <p className="text-gray-700 mb-4 text-justify">{articulo.attributes.summary.substring(0, 100)}...</p>
                 </div>
                 <Link href={`/articulo/${articulo.id}`} legacyBehavior>
                   <a className="px-6 py-2 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300 inline-block mt-auto">Leer más</a>

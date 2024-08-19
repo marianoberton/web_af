@@ -19,7 +19,7 @@ const SocialFeed = () => {
           return {
             id: item.id, // Asegúrate de usar el id correcto aquí
             type: post.media_type,
-            username: 'agustinforchieri',
+            username: 'agustin_forchieri',
             profilePic: '/images/profile.jpg',
             postPic: postPic,
             description: post.caption,
@@ -143,38 +143,45 @@ const SocialFeed = () => {
 
       {/* Vista desktop */}
       <div className="hidden md:grid grid-cols-3 gap-10">
-  {/* Columna 1 y 2: Posts de Instagram */}
-  <div className="col-span-2 grid grid-cols-2 gap-10" style={{ gridAutoRows: 'min-content' }}>
-    {instagramPosts.slice(0, visiblePosts).map((post, index) => (
-      <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
-        <div className="p-4 flex items-center">
-          <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
-          <div>
-            <h3 className="font-bold">{post.username}</h3>
-          </div>
-        </div>
-        {renderPostContent(post)}
-        <div className="p-4">
-          <p className="mb-2"><strong>{post.username}</strong> {post.description}</p>
-          <p className="text-gray-500 text-sm">{post.timestamp}</p>
-        </div>
-      </div>
-    ))}
-  </div>
+        {/* Columna 1 y 2: Posts de Instagram */}
+        <div className="col-span-2 grid grid-cols-2 gap-10" style={{ gridAutoRows: 'min-content' }}>
+          {instagramPosts.slice(0, visiblePosts).map((post, index) => (
+            <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
+              <div className="p-4 flex items-center">
+                <Image src={post.profilePic} alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full mr-3" />
+                <div>
+                  <a href="https://www.instagram.com/agustin_forchieri/" target="_blank" rel="noopener noreferrer" className="font-bold">
+                    {post.username}
+                  </a>
+                </div>
+              </div>
 
-  {/* Columna 3: Tweets */}
-  <div className="flex flex-col space-y-4">
-    {tweets.map((post) => (
-      <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
-        <div className="p-4 flex justify-center">
-          <blockquote className="twitter-tweet" data-dnt="true" data-theme="light" style={{ width: '100%', marginBottom: 0 }}>
-            <a href={post.twitterUrl}></a>
-          </blockquote>
+              {renderPostContent(post)}
+              <div className="p-4">
+                  <p className="mb-2">
+                    <a href="https://www.instagram.com/agustin_forchieri/" target="_blank" rel="noopener noreferrer" className="font-bold">
+                      {post.username}
+                    </a> {post.description}
+                  </p>
+                  <p className="text-gray-500 text-sm">{post.timestamp}</p>
+                </div>
+            </div>
+          ))}
         </div>
+
+      {/* Columna 3: Tweets */}
+      <div className="flex flex-col space-y-4">
+        {tweets.map((post) => (
+          <div key={post.id} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden w-full">
+            <div className="p-4 flex justify-center">
+              <blockquote className="twitter-tweet" data-dnt="true" data-theme="light" style={{ width: '100%', marginBottom: 0 }}>
+                <a href={post.twitterUrl}></a>
+              </blockquote>
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
+    </div>
 
 
       {visiblePosts < instagramPosts.length && (
