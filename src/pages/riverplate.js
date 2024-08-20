@@ -148,7 +148,7 @@ const River = () => {
                 Para mí, ser dirigente de River es mucho más que un título: es una misión y una responsabilidad enorme. Defender nuestros colores, nuestra historia y nuestra identidad es algo que llevo con orgullo y dedicación. Es impresionante ver el compromiso de los hinchas y empleados del club, trabajando juntos para que River siga siendo el más grande de la Argentina. Todos los que llevamos a River en el corazón tenemos la responsabilidad de seguir este legado, para que la grandeza que nos define hoy siga viva en nuestros hijos y en los hijos de ellos.
               </p>
             </div>
-            <div className="flex flex-col gap-8 ml-8">
+            <div className="flex flex-col gap-8">
               <Image src="/images/River/estadio2.jpeg" alt="River Plate 1" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg" />
               <Image src="/images/River/af_y_dirigentes_cancha.jpeg" alt="River Plate 2" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg" />
             </div>
