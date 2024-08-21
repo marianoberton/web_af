@@ -106,7 +106,7 @@ const Articulos = ({ articulosData }) => {
                   <Link href={`/articulo/${articulo.id}`} legacyBehavior>
                     <a className="text-xl font-semibold mb-2 hover:underline">{articulo.attributes.title}</a>
                   </Link>
-                  <p className="text-gray-700 mb-4 text-justify">{articulo.attributes.summary.substring(0, 100)}...</p>
+                  <p className="text-gray-700 mb-4">{articulo.attributes.summary.substring(0, 100)}...</p>
                 </div>
                 <Link href={`/articulo/${articulo.id}`} legacyBehavior>
                   <a className="px-6 py-2 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300 inline-block mt-auto">Leer más</a>
