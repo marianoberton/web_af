@@ -181,10 +181,10 @@ const River = () => {
           <p className="text-lg mb-8">Seguinos en nuestras redes sociales</p>
           <div className="flex justify-center space-x-4">
             <a href="https://x.com/nd_riverplate" target="_blank" rel="noopener noreferrer">
-              <FaTwitter className="h-8 w-8 text-gray-800 hover:text-yellow-600" />
+              <FaTwitter className="h-8 w-8 text-gray-800 hover:text-gray-600" />
             </a>
             <a href="https://www.instagram.com/nd_riverplate/?hl=es" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="h-8 w-8 text-gray-800 hover:text-yellow-600" />
+              <FaInstagram className="h-8 w-8 text-gray-800 hover:text-gray-600" />
             </a>
           </div>
         </section>

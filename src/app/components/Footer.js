@@ -12,10 +12,10 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-2 text-gray-800">Redes Sociales</h3>
             <div className="flex justify-center md:justify-start space-x-4">
               <a href="https://twitter.com/aforchieri?lang=es" target="_blank" rel="noopener noreferrer">
-                <FaTwitter className="h-8 w-8 text-gray-800 hover:text-yellow-600" />
+                <FaTwitter className="h-8 w-8 text-gray-800 hover:text-gray-600" />
               </a>
               <a href="https://www.instagram.com/agustin_forchieri/?hl=es" target="_blank" rel="noopener noreferrer">
-                <FaInstagram className="h-8 w-8 text-gray-800 hover:text-yellow-600" />
+                <FaInstagram className="h-8 w-8 text-gray-800 hover:text-gray-600" />
               </a>
             </div>
           </div>
