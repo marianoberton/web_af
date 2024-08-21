@@ -37,8 +37,8 @@ const RiverPlate = () => {
           />
           <h2 className="text-4xl font-bold text-center text-white">River</h2>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="lg:pr-12 order-2 lg:order-1"> {/* Cambiamos el orden para mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
+          <div className="lg:pr-12 order-2 lg:order-1">
             <h4 className="text-4xl font-bold text-center text-white mb-8 lg:text-left">Mi pasión y compromiso</h4>
             <p className="text-lg leading-relaxed mb-6 text-justify">
               River es parte integral de mi vida desde la infancia. Desde los domingos en familia en el Monumental hasta los viajes con amigos, la pasión por el club ha sido una constante. Hoy, como dirigente, tengo el honor y la responsabilidad de defender nuestra historia e identidad.
@@ -47,7 +47,7 @@ const RiverPlate = () => {
               Es impresionante ver el compromiso de hinchas y empleados trabajando juntos por la grandeza de River. Todos los que llevamos a River en el corazón tenemos la misión de mantener vivo este legado para las futuras generaciones.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4 order-1 lg:order-2"> {/* Cambiamos el orden para mobile */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 order-1 lg:order-2">
             <Image 
               src="/images/River/river-1.jpg" 
               alt="River Plate Image 1" 
@@ -67,17 +67,17 @@ const RiverPlate = () => {
               alt="River Plate Image 3" 
               width={300} 
               height={200} 
-              className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" 
+              className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300 hidden sm:block" 
             />
             <Image 
               src="/images/River/river_4.jpg" 
               alt="River Plate Image 4" 
               width={300} 
               height={200} 
-              className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" 
+              className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300 hidden sm:block" 
             />
           </div>
-          <div className="text-center lg:text-left order-3 lg:order-3 mt-6 lg:mt-0"> {/* Aseguramos que el botón esté al final en mobile */}
+          <div className="text-center lg:text-left order-3 lg:order-3 mt-6 lg:mt-0">
             <Link href="/riverplate" legacyBehavior>
               <a className="px-6 py-3 bg-white text-red-600 rounded hover:bg-gray-200 transition duration-300 text-lg font-bold">Ver más</a>
             </Link>
