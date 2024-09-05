@@ -23,7 +23,13 @@ const FeaturedNews = ({ media }) => {
             <h3 className="text-xl font-semibold mb-4">{item.attributes.title}</h3>
             <p className="text-gray-700 mb-4 text-justify">{item.attributes.description}</p>
             <Link href={item.attributes.link} legacyBehavior>
-              <a className="px-6 py-2 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300 inline-block">Leer más</a>
+              <a 
+                className="px-6 py-2 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300 inline-block" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Leer más
+              </a>
             </Link>
           </div>
         ))}
