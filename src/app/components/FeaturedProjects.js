@@ -4,8 +4,8 @@ import { FaFileSignature, FaFileAlt, FaScroll, FaSearch, FaChevronDown, FaChevro
 const proyectosData = [
   {
     id: 1,
-    titulo: 'Pedido de informes sobre el Fondo de Fortalecimiento Fiscal Municipal',
-    descripcion: 'Pedido de informes por la demora en el abono del Fondo de Fortalecimiento Fiscal Municipal',
+    titulo: 'Boleta Única de Papel',
+    descripcion: 'El proyecto de Boleta Única de Papel busca equidad y eficiencia electoral en Buenos Aires',
     imagen: '/images/boleta-unica.jpg',
   },
   {
