@@ -27,11 +27,11 @@ const Header = () => {
           <Link href="/parlamento" legacyBehavior>
             <a className="text-gray-800 font-semibold hover:text-blue-800 transition duration-300">Legislatura</a>
           </Link>
-          <Link href="/riverplate" legacyBehavior>
-            <a className="text-gray-800 font-semibold hover:text-red-500 transition duration-300">River</a>
-          </Link>
           <Link href="/articulos" legacyBehavior>
             <a className="text-gray-800 font-semibold hover:text-blue-800 transition duration-300">Artículos</a>
+          </Link>
+          <Link href="/riverplate" legacyBehavior>
+            <a className="text-gray-800 font-semibold hover:text-red-500 transition duration-300">River</a>
           </Link>
         </nav>
         <div className="md:hidden">

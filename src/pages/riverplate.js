@@ -133,7 +133,7 @@ const River = () => {
             <div className="md:col-span-2">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">River</h2>
               <p className="text-lg leading-relaxed text-justify">
-                Mi vida está atravesada por River. En la infancia, recuerdo cómo contaba los días para que llegara el domingo para ir con mi familia al Monumental; siempre con mi papá y mi hermano. Deseábamos llegar a la cancha y empezar a subir las escaleras internas del estadio, hasta que por fin veíamos el pasto, la gente. Miles y miles de personas en un mismo lugar, con el mismo objetivo: compartir la pasión y alentar al más grande. Después del partido siempre había tiempo para respetar las costumbres e ir a comer una pizza todos juntos.
+                Mi vida está atravesada por River. En la infancia, recuerdo cómo contaba los días para que llegara el domingo para ir con mi familia al Monumental; siempre con mi viejo y mi hermano. Deseábamos llegar a la cancha y empezar a subir las escaleras internas del estadio, hasta que por fin veíamos el pasto, la gente. Miles y miles de personas en un mismo lugar, con el mismo objetivo: compartir la pasión y alentar al más grande. Después del partido siempre había tiempo para respetar las costumbres e ir a comer una pizza todos juntos.
               </p>
               <br></br>
               <p className="text-lg leading-relaxed text-justify">
@@ -156,7 +156,7 @@ const River = () => {
           <div className="md:hidden">
             <h2 className="text-4xl font-bold mb-4">River</h2>
             <p className="text-lg leading-relaxed mb-4 text-justify">
-              Mi vida está atravesada por River. En la infancia, recuerdo cómo contaba los días para que llegara el domingo para ir con mi familia al Monumental; siempre con mi papá y mi hermano. Deseábamos llegar a la cancha y empezar a subir las escaleras internas del estadio, hasta que por fin veíamos el pasto, la gente. Miles y miles de personas en un mismo lugar, con el mismo objetivo: compartir la pasión y alentar al más grande. Después del partido siempre había tiempo para respetar las costumbres e ir a comer una pizza todos juntos.
+              Mi vida está atravesada por River. En la infancia, recuerdo cómo contaba los días para que llegara el domingo para ir con mi familia al Monumental; siempre con mi viejo y mi hermano. Deseábamos llegar a la cancha y empezar a subir las escaleras internas del estadio, hasta que por fin veíamos el pasto, la gente. Miles y miles de personas en un mismo lugar, con el mismo objetivo: compartir la pasión y alentar al más grande. Después del partido siempre había tiempo para respetar las costumbres e ir a comer una pizza todos juntos.
             </p>
             <Image src="/images/River/estadio2.jpeg" alt="River Plate 1" width={400} height={400} className="w-full h-full object-cover rounded-lg shadow-lg mb-4" />
             <p className="text-lg leading-relaxed mb-4 text-justify">

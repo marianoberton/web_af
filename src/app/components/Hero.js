@@ -9,7 +9,7 @@ const Hero = () => {
         <div className="w-full md:max-w-lg text-right ml-auto mb-4 md:mb-0">
           <h1 className="text-4xl md:text-6xl font-bold">Agustín Forchieri</h1>
           
-          <div className="mt-8 space-x-4 flex justify-end">
+          {/* <div className="mt-8 space-x-4 flex justify-end">
             <Link href="/parlamento" legacyBehavior>
               <a className="px-6 py-3 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300">Legislatura</a>
             </Link>
@@ -19,7 +19,7 @@ const Hero = () => {
                 <Image src="/images/River/river-logo.png" alt="River Plate Logo" width={20} height={20} className="ml-2" />
               </a>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

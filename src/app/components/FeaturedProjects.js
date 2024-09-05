@@ -5,7 +5,7 @@ const proyectosData = [
   {
     id: 1,
     titulo: 'Boleta Única de Papel',
-    descripcion: 'El proyecto de Boleta Única de Papel busca equidad y eficiencia electoral en Buenos Aires',
+    descripcion: 'Adopción del sistema de Boleta Única de Papel (BUP) para las elecciones provinciales en Buenos Aires.',
     imagen: '/images/boleta-unica.jpg',
   },
   {

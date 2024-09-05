@@ -48,8 +48,13 @@ const SocialFeed = () => {
           id: tweet.id,
           type: 'twitter',
           twitterUrl: tweet.attributes.twitterUrl,
+          createdAt: tweet.attributes.created_at // Asegúrate de que esta propiedad esté disponible
         }));
-        setPosts(prevPosts => [...tweetsData, ...prevPosts]);
+
+        // Ordenar los tweets por fecha de creación (más recientes primero)
+        const sortedTweetsData = tweetsData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        setPosts(prevPosts => [...sortedTweetsData, ...prevPosts]);
 
         const script = document.createElement('script');
         script.src = 'https://platform.twitter.com/widgets.js';
