@@ -33,8 +33,6 @@ export async function getStaticProps() {
 
 const Articulos = ({ articulosData, noticiasData }) => {
   const [filtro, setFiltro] = useState('Todas');
-  const [articulos, setArticulos] = useState(articulosData);
-  const [noticias, setNoticias] = useState(noticiasData);
   const [itemsToShow, setItemsToShow] = useState(6); // Mostrar 2 filas (3 por fila)
 
   const filtrarArticulos = (categoria) => {
@@ -46,10 +44,10 @@ const Articulos = ({ articulosData, noticiasData }) => {
   };
 
   const contenidoFiltrado = () => {
-    const articulosFiltrados = articulos.filter(
+    const articulosFiltrados = articulosData.filter(
       (articulo) => filtro === 'Todas' || articulo.attributes.category === filtro
     );
-    const noticiasFiltradas = noticias.filter(
+    const noticiasFiltradas = noticiasData.filter(
       (noticia) => filtro === 'Todas' || noticia.attributes.category === filtro
     );
 
@@ -82,68 +80,79 @@ const Articulos = ({ articulosData, noticiasData }) => {
 
       <main className="p-5 container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {contenidoFiltrado().map((contenido) => (
-            <div key={contenido.id} className="bg-white p-6 rounded-lg shadow-lg flex flex-col justify-between">
-              <div>
-                <div className="relative w-full pb-[56.25%] mb-4">
-                  {contenido.attributes.image?.data?.[0]?.attributes?.url ||
-                  contenido.attributes.image?.data?.attributes?.url ? (
-                    <Image
-                      src={
-                        contenido.attributes.image.data[0]?.attributes?.url ||
-                        contenido.attributes.image.data?.attributes?.url
-                      }
-                      alt={contenido.attributes.title}
-                      fill
-                      className="absolute top-0 left-0 w-full h-full object-cover object-center"
-                    />
-                  ) : (
-                    <p>Imagen no disponible</p>
+          {contenidoFiltrado().map((contenido) => {
+            // Identificar si el contenido viene de 'articulosData'
+            const esArticulo = articulosData.some((articulo) => articulo.id === contenido.id);
+
+            return (
+              <div key={contenido.id} className="bg-white p-6 rounded-lg shadow-lg flex flex-col justify-between">
+                <div className="relative">
+                  {/* Mostrar etiqueta "OPINIÓN" solo si es un artículo */}
+                  {esArticulo && (
+                    <div className="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 text-xs font-bold rounded">
+                      OPINIÓN
+                    </div>
                   )}
+                  <div className="relative w-full pb-[56.25%] mb-4">
+                    {contenido.attributes.image?.data?.[0]?.attributes?.url ||
+                    contenido.attributes.image?.data?.attributes?.url ? (
+                      <Image
+                        src={
+                          contenido.attributes.image.data[0]?.attributes?.url ||
+                          contenido.attributes.image.data?.attributes?.url
+                        }
+                        alt={contenido.attributes.title}
+                        layout="fill"
+                        className="absolute top-0 left-0 w-full h-full object-cover object-center"
+                      />
+                    ) : (
+                      <p>Imagen no disponible</p>
+                    )}
+                  </div>
+                  {contenido.attributes.link ? (
+                    <Link href={contenido.attributes.link} legacyBehavior>
+                      <a className="text-xl font-semibold mb-2 hover:underline">
+                        {contenido.attributes.title}
+                      </a>
+                    </Link>
+                  ) : (
+                    <Link href={`/articulo/${contenido.id}`} legacyBehavior>
+                      <a className="text-xl font-semibold mb-2 hover:underline">
+                        {contenido.attributes.title}
+                      </a>
+                    </Link>
+                  )}
+                  <p className="text-gray-700 mb-4">
+                    {contenido.attributes.description ||
+                    contenido.attributes.summary
+                      ? `${contenido.attributes.description?.substring(0, 100) ||
+                          contenido.attributes.summary?.substring(0, 100)}...`
+                      : 'Sin descripción disponible'}
+                  </p>
                 </div>
                 {contenido.attributes.link ? (
                   <Link href={contenido.attributes.link} legacyBehavior>
-                    <a className="text-xl font-semibold mb-2 hover:underline">
-                      {contenido.attributes.title}
+                    <a
+                      className="px-6 py-2 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300 inline-block mt-auto"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Leer más
                     </a>
                   </Link>
                 ) : (
                   <Link href={`/articulo/${contenido.id}`} legacyBehavior>
-                    <a className="text-xl font-semibold mb-2 hover:underline">
-                      {contenido.attributes.title}
+                    <a className="px-6 py-2 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300 inline-block mt-auto">
+                      Leer más
                     </a>
                   </Link>
                 )}
-                <p className="text-gray-700 mb-4">
-                  {contenido.attributes.description ||
-                  contenido.attributes.summary
-                    ? `${contenido.attributes.description?.substring(0, 100) ||
-                        contenido.attributes.summary?.substring(0, 100)}...`
-                    : 'Sin descripción disponible'}
-                </p>
               </div>
-              {contenido.attributes.link ? (
-                <Link href={contenido.attributes.link} legacyBehavior>
-                  <a
-                    className="px-6 py-2 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300 inline-block mt-auto"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Leer más
-                  </a>
-                </Link>
-              ) : (
-                <Link href={`/articulo/${contenido.id}`} legacyBehavior>
-                  <a className="px-6 py-2 bg-blue-800 text-white rounded hover:bg-blue-900 transition duration-300 inline-block mt-auto">
-                    Leer más
-                  </a>
-                </Link>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {contenidoFiltrado().length < articulos.length + noticias.length && (
+        {contenidoFiltrado().length < articulosData.length + noticiasData.length && (
           <div className="text-center mt-8">
             <button
               onClick={loadMore}
