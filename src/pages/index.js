@@ -48,7 +48,7 @@ const Home = ({ media }) => {
         <FeaturedNews media={media} />
         <SocialFeed />
       </main>
-      <Contacto />
+      {/* <Contacto /> */}
       <Footer />
     </div>
   );

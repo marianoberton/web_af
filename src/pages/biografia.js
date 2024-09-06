@@ -38,10 +38,7 @@ const Biografia = () => {
               <p className="text-lg mb-4 text-justify">
                 Durante este período se sancionaron leyes que posibilitaron la creación de la Villa Olímpica, el Parque de la Innovación, la construcción del Paseo y el Parque del Bajo, el Parque de la Estación y también la apertura de calles en el marco de la elevación de los ferrocarriles y de las obras de los viaductos, entre otras.
               </p>
-              <p className="text-lg text-justify">
-                Además de mi trabajo legislativo, anteriormente he tenido el privilegio de colaborar en distintos ámbitos profesionales, siempre con el objetivo de aportar mi experiencia para que los proyectos avancen y se concreten.
-              </p>
-            </div>
+              </div>
           </div>
         </section>
 
