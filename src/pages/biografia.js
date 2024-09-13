@@ -7,9 +7,9 @@ const Biografia = () => {
   return (
     <div>
       <Head>
-        <title>Biografía de Agustín Forchieri</title>
-        <meta name="description" content="Biografía del diputado Agustín Forchieri, miembro de la comisión directiva de River Plate." />
-        <link rel="icon" href="/favicon.ico" />
+      <title>Biografía de Agustín Forchieri - Diputado y Dirigente de River Plate</title>
+      <meta name="description" content="Conoce la biografía de Agustín Forchieri, Diputado de Buenos Aires y miembro de la comisión directiva de River Plate. Descubre su trayectoria política y compromiso con la comunidad." />
+      <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
@@ -28,12 +28,12 @@ const Biografia = () => {
               />
             </div>
             <div className="md:col-span-2 order-2 md:order-1 lg:pr-8"> {/* Añadimos padding-right en pantallas grandes */}
-              <h2 className="text-4xl font-bold mb-8">Biografía</h2>
+              <h1 className="text-4xl font-bold mb-8">Biografía de Agustín Forchieri</h1>
               <p className="text-lg mb-4 text-justify">
                 Soy Licenciado en Relaciones del Trabajo por la Universidad de Buenos Aires (2004) y realicé una Maestría en Planificación de Ciudades en la FADU - UBA. Socio e hincha de River de toda la vida. Actualmente, presido el bloque PRO en la Legislatura de la Provincia de Buenos Aires y me desempeño como Prosecretario del <a href="https://www.cariverplate.com.ar/" className="text-blue-500 hover:underline">Club Atlético River Plate</a>.
               </p>
               <p className="text-lg mb-4 text-justify">
-                En la <a href="https://www.legislatura.gob.ar/legislador/forchieriagust%C3%ADn" className="text-blue-500 hover:underline">Legislatura de la Ciudad de Buenos Aires</a> me desempeñé como Vicepresidente 1° de la cámara y anteriormente fui presidente del bloque “Vamos Juntos” y la comisión de “Planeamiento Urbano”. Durante estos años, me enfoqué en proyectos que promuevan el desarrollo productivo y urbano para beneficio de los vecinos.
+                En la <a href="https://www.legislatura.gob.ar/legislador/forchieriagust%C3%ADn" className="text-blue-500 hover:underline " target="_blank" rel="noopener noreferrer">Legislatura de la Ciudad de Buenos Aires</a> me desempeñé como Vicepresidente 1° de la cámara y anteriormente fui presidente del bloque “Vamos Juntos” y la comisión de “Planeamiento Urbano”. Durante estos años, me enfoqué en proyectos que promuevan el desarrollo productivo y urbano para beneficio de los vecinos.
               </p>
               <p className="text-lg mb-4 text-justify">
                 Durante este período se sancionaron leyes que posibilitaron la creación de la Villa Olímpica, el Parque de la Innovación, la construcción del Paseo y el Parque del Bajo, el Parque de la Estación y también la apertura de calles en el marco de la elevación de los ferrocarriles y de las obras de los viaductos, entre otras.

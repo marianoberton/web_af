@@ -50,31 +50,35 @@ const RiverPlate = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 order-1 lg:order-2">
             <Image 
               src="/images/River/river-1.jpg" 
-              alt="River Plate Image 1" 
+              alt="River Plate Estadio Monumental" 
               width={300} 
               height={200} 
               className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" 
+              loading="lazy"
             />
             <Image 
               src="/images/River/river-2.jpg" 
-              alt="River Plate Image 2" 
+              alt="Dirigentes de River Plate" 
               width={300} 
               height={200} 
               className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300" 
+              loading="lazy"
             />
             <Image 
               src="/images/River/river-3.jpg" 
-              alt="River Plate Image 3" 
+              alt="Festejos River Plate Campeon" 
               width={300} 
               height={200} 
               className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300 hidden sm:block" 
+              loading="lazy"
             />
             <Image 
               src="/images/River/river_4.jpg" 
-              alt="River Plate Image 4" 
+              alt="Obras en el estadio Monumental" 
               width={300} 
               height={200} 
               className="w-full h-48 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300 hidden sm:block" 
+              loading="lazy"
             />
           </div>
           <div className="text-center lg:text-left order-3 lg:order-3 mt-6 lg:mt-0">
@@ -100,7 +104,7 @@ const RiverPlate = () => {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              title="River Plate Video"
+              title="River Plate Video de presentacion"
             ></iframe>
           </div>
         </div>

@@ -38,8 +38,10 @@ const SocialFeed = () => {
         setPosts(prevPosts => [...sortedInstagramData, ...prevPosts]);
       } catch (error) {
         console.error('Error fetching Instagram posts:', error);
+        
       }
     };
+    
 
     const fetchTweets = async () => {
       try {

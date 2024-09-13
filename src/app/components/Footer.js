@@ -36,8 +36,11 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex justify-center items-center mt-4">
-          <p className="text-center text-gray-600">&copy; 2024 Agustín Forchieri. Todos los derechos reservados.</p>
+              <p className="text-center text-gray-600">
+                &copy; {new Date().getFullYear()} Agustín Forchieri. Todos los derechos reservados.
+              </p>
         </div>
+
       </div>
     </footer>
   );
