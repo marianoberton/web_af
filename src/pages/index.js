@@ -66,7 +66,7 @@ const Home = ({ media }) => {
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-YRPVCQ0R77"
-        ></Script>
+        />
         <Script
           dangerouslySetInnerHTML={{
             __html: `
