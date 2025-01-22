@@ -16,10 +16,7 @@ const Biography = () => {
       <div className="w-full md:w-2/3 md:pl-10">
         <h2 className="text-4xl font-bold mb-5 text-center md:text-left">Breve Biografía</h2>
         <p className="mb-4 text-lg leading-relaxed text-justify">
-          Soy Licenciado en Relaciones del Trabajo por la Universidad de Buenos Aires (2004) y
-          realicé una Maestría en Planificación de Ciudades en la FADU - UBA. Socio e hincha de
-          River de toda la vida. Actualmente, presido el bloque PRO en la Legislatura de la Provincia
-          de Buenos Aires y me desempeño como Prosecretario del Club Atlético River Plate.
+        Soy Licenciado en Relaciones del Trabajo por la Universidad de Buenos Aires (2004) y realicé una Maestría en Planificación de Ciudades en la FADU - UBA. Socio e hincha de River de toda la vida. Actualmente, soy Prosecretario del Club Atlético River Plate y diputado por la provincia de Buenos Aires.
         </p>
         <div className="text-center md:text-left">
           <Link href="/biografia" legacyBehavior>

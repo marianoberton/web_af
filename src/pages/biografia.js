@@ -30,7 +30,7 @@ const Biografia = () => {
             <div className="md:col-span-2 order-2 md:order-1 lg:pr-8"> {/* Añadimos padding-right en pantallas grandes */}
               <h1 className="text-4xl font-bold mb-8">Biografía de Agustín Forchieri</h1>
               <p className="text-lg mb-4 text-justify">
-                Soy Licenciado en Relaciones del Trabajo por la Universidad de Buenos Aires (2004) y realicé una Maestría en Planificación de Ciudades en la FADU - UBA. Socio e hincha de River de toda la vida. Actualmente, presido el bloque PRO en la Legislatura de la Provincia de Buenos Aires y me desempeño como Prosecretario del <a href="https://www.cariverplate.com.ar/" className="text-blue-500 hover:underline">Club Atlético River Plate</a>.
+                Soy Licenciado en Relaciones del Trabajo por la Universidad de Buenos Aires (2004) y realicé una Maestría en Planificación de Ciudades en la FADU - UBA. Socio e hincha de River de toda la vida. Actualmente, soy Prosecretario del <a href="https://www.cariverplate.com.ar/" className="text-blue-500 hover:underline">Club Atlético River Plate</a> y diputado por la provincia de Buenos Aires.
               </p>
               <p className="text-lg mb-4 text-justify">
                 En la <a href="https://www.legislatura.gob.ar/legislador/forchieriagust%C3%ADn" className="text-blue-500 hover:underline " target="_blank" rel="noopener noreferrer">Legislatura de la Ciudad de Buenos Aires</a> me desempeñé como Vicepresidente 1° de la cámara y anteriormente fui presidente del bloque “Vamos Juntos” y la comisión de “Planeamiento Urbano”. Durante estos años, me enfoqué en proyectos que promuevan el desarrollo productivo y urbano para beneficio de los vecinos.
